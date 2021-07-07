@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './question.dart';
+// import 'package:personality_quiz/question.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -11,13 +13,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+  var _questionIndex = 0;
 
   void answerQuestion() {
     setState(
       () {
-        questionIndex++;
-        print(questionIndex);
+        _questionIndex++;
+        print(_questionIndex);
       },
     );
   }
@@ -33,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(title: Text('Personality test')),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Question(questions[_questionIndex]),
             ElevatedButton(
               onPressed: answerQuestion,
               child: Text('Answer 1'),
