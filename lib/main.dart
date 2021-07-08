@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answers.dart';
 // import 'package:personality_quiz/question.dart';
 
 // void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(
       () {
         _questionIndex++;
@@ -38,18 +39,9 @@ class _MyAppState extends State<MyApp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Question(questions[_questionIndex]),
-            ElevatedButton(
-              onPressed: answerQuestion,
-              child: Text('Answer 1'),
-            ),
-            ElevatedButton(
-              onPressed: answerQuestion,
-              child: Text('Answer 2'),
-            ),
-            ElevatedButton(
-              onPressed: () => print('Answer 3'),
-              child: Text('Answer 3'),
-            ),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
           ],
         ),
       ),
