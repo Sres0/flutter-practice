@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './question.dart';
-import './answers.dart';
 import './quiz.dart';
 // import 'package:personality_quiz/question.dart';
 
@@ -17,6 +15,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  //final instead of var because it's not gonna change, but const instead of final because it remains the same since the app starts--we know what the final value will be
   //static const works as well
   final _qAndAs = const [
     {
@@ -44,13 +43,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext ctx) {
-    //final instead of var because it's not gonna change, but const instead of final because it remains the same since the app starts--we know what the final value will be
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Personality test')),
         body: _questionIndex < _qAndAs.length
-            ? Quiz(_answerQuestion, _qAndAs, _questionIndex)
+            ? Quiz(_answerQuestion,
+                qAndAs: _qAndAs, questionIndex: _questionIndex)
             : Center(child: Text('End c:')),
       ),
     );

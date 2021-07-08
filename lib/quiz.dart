@@ -9,10 +9,15 @@ class Quiz extends StatelessWidget {
   final int questionIndex;
 
   Quiz(
-    this.answerQuestion,
-    this.qAndAs,
-    this.questionIndex,
-  );
+    this.answerQuestion, {
+    this.qAndAs = const [
+      {
+        'questionText': 'Hello there',
+        'answers': ['Hope you\'re alright', 'C ya']
+      }
+    ],
+    this.questionIndex = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
