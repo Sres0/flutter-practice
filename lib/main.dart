@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import './question.dart';
 import './answers.dart';
+import './quiz.dart';
 // import 'package:personality_quiz/question.dart';
 
 // void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
   //static const works as well
-  final qAndAs = const [
+  final _qAndAs = const [
     {
       'questionText': 'What\'s your favorite color?',
       'answers': ['Blue', 'Red', 'White']
@@ -47,19 +49,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Personality test')),
-        body: _questionIndex < qAndAs.length
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Question(qAndAs[_questionIndex]['questionText'] as String),
-                  ...(qAndAs[_questionIndex]['answers'] as List<
-                          String>) //... spread operator makes every value of the list an element
-                      .map((answer) {
-                    return Answer(_answerQuestion, answer);
-                  }).toList()
-                ],
-              )
+        body: _questionIndex < _qAndAs.length
+            ? Quiz(_answerQuestion, _qAndAs, _questionIndex)
             : Center(child: Text('End c:')),
       ),
     );
