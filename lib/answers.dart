@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
   final VoidCallback onPressed;
+  final String answerText;
 
-  Answer(this.onPressed);
+  Answer(
+    this.onPressed,
+    this.answerText,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class Answer extends StatelessWidget {
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.black),
             foregroundColor: MaterialStateProperty.all(Colors.green)),
-        child: Text('Ans 1'),
+        child: Text(answerText),
         onPressed: onPressed,
       ),
     );
