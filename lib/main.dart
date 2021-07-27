@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import './quiz.dart';
+import './result.dart';
+
 // import 'package:personality_quiz/question.dart';
 
 // void main() {
@@ -50,7 +52,7 @@ class _MyAppState extends State<MyApp> {
                 answerQuestion: _answerQuestion,
                 qAndAs: _qAndAs,
                 questionIndex: _questionIndex)
-            : Center(child: Text('End c:')),
+            : Result(),
       ),
     );
   }
