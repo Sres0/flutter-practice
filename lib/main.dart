@@ -46,8 +46,10 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(title: Text('Personality test')),
         body: _questionIndex < _qAndAs.length
-            ? Quiz(_answerQuestion,
-                qAndAs: _qAndAs, questionIndex: _questionIndex)
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                qAndAs: _qAndAs,
+                questionIndex: _questionIndex)
             : Center(child: Text('End c:')),
       ),
     );
