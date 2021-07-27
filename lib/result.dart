@@ -44,7 +44,7 @@ class Result extends StatelessWidget {
             //   )),
             // ),
             style: TextButton.styleFrom(
-              primary: Colors.orange,
+              primary: Colors.green,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),

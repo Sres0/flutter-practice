@@ -16,9 +16,13 @@ class Answer extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: ElevatedButton(
-        style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.black),
-            foregroundColor: MaterialStateProperty.all(Colors.green)),
+        // style: ButtonStyle(
+        //     backgroundColor: MaterialStateProperty.all(Colors.black),
+        //     foregroundColor: MaterialStateProperty.all(Colors.green)),
+        style: ElevatedButton.styleFrom(
+          primary: Colors.green,
+          onPrimary: Colors.black,
+        ),
         child: Text(answerText),
         onPressed: onPressed,
       ),
