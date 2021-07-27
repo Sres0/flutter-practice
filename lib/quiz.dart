@@ -26,7 +26,8 @@ class Quiz extends StatelessWidget {
                     Object>>) //... spread operator makes every value of the list an element
             .map((answer) {
           return Answer(
-            () => answerQuestion(answer['score']),
+            () => answerQuestion(answer[
+                'score']), //Wasn't calling but performing, so had to send a function that, when activated, would perform
             answer['text'] as String,
           );
         }).toList()
