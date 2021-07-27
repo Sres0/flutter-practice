@@ -18,11 +18,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _score = 0;
+  final _qAndAs = qAndAs;
   //final instead of var because it's not gonna change, but const instead of final because it remains the same since the app starts--we know what the final value will be
   //static const works as well
-  final _qAndAs = qAndAs;
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _score += score;
     setState(
       () {
         _questionIndex++;
@@ -40,7 +42,7 @@ class _MyAppState extends State<MyApp> {
                 answerQuestion: _answerQuestion,
                 qAndAs: _qAndAs,
                 questionIndex: _questionIndex)
-            : Result(),
+            : Result(_score),
       ),
     );
   }

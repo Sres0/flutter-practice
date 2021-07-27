@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result();
+  final int finalScore;
+
+  Result(this.finalScore);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('End c:'),
+      child: Text('Final score: ' + finalScore.toString()),
     );
   }
 }
