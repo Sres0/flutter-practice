@@ -8,15 +8,10 @@ class Quiz extends StatelessWidget {
   final List<Map<String, Object>> qAndAs;
   final int questionIndex;
 
-  Quiz(
-    this.answerQuestion, {
-    this.qAndAs = const [
-      {
-        'questionText': 'Hello there',
-        'answers': ['Hope you\'re alright', 'C ya']
-      }
-    ],
-    this.questionIndex = 0,
+  Quiz({
+    required this.answerQuestion,
+    required this.qAndAs,
+    required this.questionIndex,
   });
 
   @override
