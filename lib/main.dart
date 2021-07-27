@@ -36,7 +36,6 @@ class _MyAppState extends State<MyApp> {
     setState(
       () {
         _questionIndex++;
-        print(_questionIndex);
       },
     );
   }
