@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './quiz.dart';
 import './result.dart';
+import './lqAndAs.dart';
 
 // import 'package:personality_quiz/question.dart';
 
@@ -19,20 +20,7 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
   //final instead of var because it's not gonna change, but const instead of final because it remains the same since the app starts--we know what the final value will be
   //static const works as well
-  final _qAndAs = const [
-    {
-      'questionText': 'What\'s your favorite color?',
-      'answers': ['Blue', 'Red', 'White']
-    },
-    {
-      'questionText': 'What\'s your favorite animal?',
-      'answers': ['Dog', 'Cat', 'Horse', 'Squid']
-    },
-    {
-      'questionText': 'What\'s your favorite card?',
-      'answers': ['Ace of Spades', 'King of Hearts']
-    },
-  ];
+  final _qAndAs = qAndAs;
 
   void _answerQuestion() {
     setState(
