@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import './textControl.dart';
+import 'text_control.dart';
 
 main() => runApp(MyApp());
 
