@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'constants/container_card.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -34,26 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            child: Card(
-              color: Colors.grey.shade800,
-              child: Text(
-                'Weekly balance',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(10),
-            child: Card(
-              child: Text(
-                'Transaction list',
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          )
+          ContainerCard('Weekly Balance'),
+          ContainerCard('Transaction'),
         ],
       ),
     );
