@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants/container_card.dart';
+import 'widgets/container_card.dart';
 
 void main() => runApp(MyApp());
 
