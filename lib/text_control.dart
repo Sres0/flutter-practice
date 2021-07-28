@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 import './texts.dart';
 
@@ -10,13 +11,10 @@ class TextControl extends StatefulWidget {
 
 class _TextControlState extends State<TextControl> {
   int _index = 0;
+  var rdm = Random();
 
   void change() {
-    if (_index < texts.length - 1) {
-      setState(() => _index += 1);
-    } else if (_index > 0) {
-      setState(() => _index = 0);
-    }
+    setState(() => _index = rdm.nextInt(texts.length - 1));
   }
 
   @override
