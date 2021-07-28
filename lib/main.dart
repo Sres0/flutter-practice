@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/transaction.dart';
 import 'widgets/container_card.dart';
+import 'constants/transaction_list.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,20 +19,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class MyHomePage extends StatelessWidget {
   final String title;
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+  final List<Transaction> _transactions = transactions;
 
-class _MyHomePageState extends State<MyHomePage> {
+  MyHomePage({required this.title});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade900,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
