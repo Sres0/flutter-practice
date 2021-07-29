@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatefulWidget {
-  final VoidCallback onPressed;
-  NewTransaction(this.onPressed);
+  final Function addTransaction;
+  NewTransaction(this.addTransaction);
 
   @override
   _NewTransactionState createState() => _NewTransactionState();
@@ -39,8 +39,14 @@ class _NewTransactionState extends State<NewTransaction> {
             OutlinedButton(
               style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Colors.white70, width: 2)),
-              onPressed: () => print(
-                  'Title: ${titleController.text}\nAmount: ${amountController.text}'),
+              onPressed: () {
+                widget.addTransaction(
+                  titleController.text,
+                  double.parse(amountController.text),
+                );
+                titleController.clear();
+                amountController.clear();
+              },
               child: Text('Add Transaction',
                   style: TextStyle(
                     color: Colors.white70,
