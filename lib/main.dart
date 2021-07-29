@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'constants/transaction_list.dart';
+import 'widgets/transaction_list.dart';
 // import 'widgets/transaction.dart';
-import 'widgets/container_card.dart';
-import 'widgets/transaction_card.dart';
-import 'widgets/new_transaction.dart';
+import './widgets/container_card.dart';
+import './widgets/transaction_card.dart';
+import './widgets/new_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,12 +38,8 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ContainerCard('Weekly Balance'),
-          NewTransaction(() {}),
-          Column(
-            children: transactions.map((tx) {
-              return TransactionCard(tx);
-            }).toList(),
-          )
+          Container(padding: EdgeInsets.all(10), child: NewTransaction(() {})),
+          TransactionList(),
         ],
       ),
     );
