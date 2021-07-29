@@ -38,7 +38,10 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ContainerCard('Weekly Balance'),
-          Container(padding: EdgeInsets.all(10), child: NewTransaction(() {})),
+          Container(
+            padding: EdgeInsets.all(10),
+            child: NewTransaction(() {}),
+          ),
           TransactionList(),
         ],
       ),
