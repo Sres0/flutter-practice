@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
-class CardForm extends StatelessWidget {
+class CardForm extends StatefulWidget {
   final VoidCallback onPressed;
-  const CardForm(this.onPressed);
+  CardForm(this.onPressed);
+
+  @override
+  _CardFormState createState() => _CardFormState();
+}
+
+class _CardFormState extends State<CardForm> {
+  // String titleInput = 'Title';
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -14,22 +23,23 @@ class CardForm extends StatelessWidget {
         child: Column(
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(
-                labelText: 'Title',
-              ),
+              decoration: InputDecoration(labelText: 'Title'),
+              // onChanged: (val) => titleInput = val, //controller instead of variable for input storage
+              controller: titleController,
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
+              controller: amountController,
             ),
             SizedBox(height: 10),
             OutlinedButton(
               style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Colors.white70)),
-              onPressed: onPressed,
-              child: Text(
-                'Add Transaction',
-                style: TextStyle(color: Colors.white70),
-              ),
+              // onPressed: widget.onPressed,
+              onPressed: () => print(
+                  'Title: ${titleController.text}\nAmount: ${amountController.text}'),
+              child: Text('Add Transaction',
+                  style: TextStyle(color: Colors.white70)),
             ),
             SizedBox(height: 10),
           ],
