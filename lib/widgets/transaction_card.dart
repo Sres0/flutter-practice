@@ -53,7 +53,7 @@ class TransactionCard extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  tx.date.toString(),
+                  DateFormat.yMd('en_US').add_jm().format(tx.date),
                   style: TextStyle(color: Colors.white54),
                 ),
               ],
