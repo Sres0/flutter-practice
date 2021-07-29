@@ -9,7 +9,6 @@ class NewTransaction extends StatefulWidget {
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  // String titleInput = 'Title';
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
@@ -23,23 +22,30 @@ class _NewTransactionState extends State<NewTransaction> {
         child: Column(
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(labelText: 'Title'),
-              // onChanged: (val) => titleInput = val, //controller instead of variable for input storage
+              decoration: InputDecoration(
+                labelText: 'Title',
+                labelStyle: TextStyle(fontSize: 17),
+              ),
               controller: titleController,
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
+              decoration: InputDecoration(
+                labelText: 'Amount',
+                labelStyle: TextStyle(fontSize: 17),
+              ),
               controller: amountController,
             ),
             SizedBox(height: 10),
             OutlinedButton(
               style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.white70)),
-              // onPressed: widget.onPressed,
+                  side: BorderSide(color: Colors.white70, width: 2)),
               onPressed: () => print(
                   'Title: ${titleController.text}\nAmount: ${amountController.text}'),
               child: Text('Add Transaction',
-                  style: TextStyle(color: Colors.white70)),
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 20,
+                  )),
             ),
           ],
         ),

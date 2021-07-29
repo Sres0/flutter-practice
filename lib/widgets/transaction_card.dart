@@ -17,9 +17,9 @@ class TransactionCard extends StatelessWidget {
       ),
       color: Colors.grey.shade700,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(10),
@@ -32,8 +32,8 @@ class TransactionCard extends StatelessWidget {
                 ),
               ),
               child: Text(
-                // '\$${double.parse((tx.amount).toStringAsFixed(2))}', //Instead of toString
-                '\$${tx.amount}',
+                '\$${double.parse((tx.amount).toStringAsFixed(2))}',
+                // '\$${tx.amount}', //^ for 2 decimals
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
