@@ -15,11 +15,11 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: Colors.grey.shade600,
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      color: Colors.grey.shade600,
+      child: Container(
+        padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             TextField(
@@ -41,7 +41,6 @@ class _NewTransactionState extends State<NewTransaction> {
               child: Text('Add Transaction',
                   style: TextStyle(color: Colors.white70)),
             ),
-            SizedBox(height: 10),
           ],
         ),
       ),
