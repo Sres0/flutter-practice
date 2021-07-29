@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'widgets/transaction.dart';
 import 'widgets/container_card.dart';
 import 'constants/transaction_list.dart';
+import 'widgets/transaction_card.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,7 +44,7 @@ class MyHomePage extends StatelessWidget {
           // ]), //spread operator
           Column(
             children: transactions.map((tx) {
-              return ContainerCard(tx.title);
+              return TransactionCard(tx);
             }).toList(),
           )
         ],
