@@ -7,12 +7,12 @@ List<Transaction> transactions = [
     amount: 0.00,
     date: DateTime.now(),
     id: '0',
-    title: 'Dummy',
+    title: 'No one ever',
   ),
   Transaction(
     amount: 10.00,
     date: DateTime.now(),
     id: '1',
-    title: 'Dummy 2',
+    title: 'Easy peasy',
   ),
 ];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/transaction.dart';
+// import 'widgets/transaction.dart';
 import 'widgets/container_card.dart';
 import 'constants/transaction_list.dart';
 
@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final String title;
-  final List<Transaction> _transactions = transactions;
 
   MyHomePage({required this.title});
 
@@ -33,11 +32,20 @@ class MyHomePage extends StatelessWidget {
         title: Text(title),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ContainerCard('Weekly Balance'),
-          ContainerCard('Transaction'),
+          // Column(children: <Widget>[
+          //   ...transactions.map((tx) {
+          //     return Card(child: Text(tx.title));
+          //   }).toList(),
+          // ]), //spread operator
+          Column(
+            children: transactions.map((tx) {
+              return ContainerCard(tx.title);
+            }).toList(),
+          )
         ],
       ),
     );
