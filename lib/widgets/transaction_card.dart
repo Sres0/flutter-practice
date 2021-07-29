@@ -32,7 +32,8 @@ class TransactionCard extends StatelessWidget {
                 ),
               ),
               child: Text(
-                '\$${tx.amount}', //Instead of toString
+                // '\$${double.parse((tx.amount).toStringAsFixed(2))}', //Instead of toString
+                '\$${tx.amount}',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
