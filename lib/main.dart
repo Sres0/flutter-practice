@@ -4,7 +4,7 @@ import 'constants/transaction_list.dart';
 // import 'widgets/transaction.dart';
 import 'widgets/container_card.dart';
 import 'widgets/transaction_card.dart';
-import 'widgets/card_form.dart';
+import 'widgets/new_transaction_form.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,7 +38,7 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ContainerCard('Weekly Balance'),
-          CardForm(() {}),
+          NewTransactionForm(() {}),
           Column(
             children: transactions.map((tx) {
               return TransactionCard(tx);
