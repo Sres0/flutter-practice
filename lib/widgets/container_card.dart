@@ -11,7 +11,7 @@ class ContainerCard extends StatelessWidget {
         color: Colors.grey.shade800,
         child: Text(
           text,
-          style: TextStyle(fontSize: 20, color: Colors.white),
+          style: TextStyle(fontSize: 20, color: Colors.white70),
           textAlign: TextAlign.center,
         ),
       ),
