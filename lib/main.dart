@@ -21,8 +21,23 @@ class MyApp extends StatelessWidget {
           primaryColorDark: Colors.grey.shade900,
           fontFamily: 'Quicksand',
           textTheme: TextTheme(
-              headline4:
-                  TextStyle(fontFamily: 'Quicksand', color: Colors.white70)),
+              headline4: TextStyle(
+                fontFamily: 'Quicksand',
+                color: Colors.white70,
+              ),
+              headline6: TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                color: Colors.white70,
+              ),
+              subtitle1: TextStyle(
+                fontFamily: 'Quicksand',
+                color: Colors.white70,
+              ),
+              subtitle2: TextStyle(
+                fontFamily: 'Quicksand',
+                color: Colors.white54,
+              )),
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.copyWith(
                     headline6: TextStyle(

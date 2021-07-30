@@ -48,7 +48,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 onSubmitted: (_) => _submitData(),
                 decoration: InputDecoration(
                   labelText: 'Title',
-                  labelStyle: TextStyle(fontSize: 17),
+                  labelStyle: Theme.of(context).textTheme.subtitle1,
                 ),
               ),
               TextField(
@@ -57,23 +57,20 @@ class _NewTransactionState extends State<NewTransaction> {
                 onSubmitted: (_) => _submitData(),
                 decoration: InputDecoration(
                   labelText: 'Amount',
-                  labelStyle: TextStyle(fontSize: 17),
+                  labelStyle: Theme.of(context).textTheme.subtitle1,
                 ),
               ),
               SizedBox(height: 10),
               OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                      side: BorderSide(
-                          color: Theme.of(context).primaryColorLight,
-                          width: 2)),
-                  onPressed: () => _submitData(),
-                  child: Text(
-                    'Add Transaction',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColorLight,
-                      fontSize: 20,
-                    ),
-                  )),
+                style: OutlinedButton.styleFrom(
+                    side: BorderSide(
+                        color: Theme.of(context).primaryColorLight, width: 2)),
+                onPressed: () => _submitData(),
+                child: Text(
+                  'Add Transaction',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ),
             ],
           ),
         ),

@@ -33,28 +33,21 @@ class TransactionCard extends StatelessWidget {
               ),
               child: Text(
                 '\$${double.parse((tx.amount).toStringAsFixed(2))}',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Theme.of(context).primaryColorLight,
-                ),
+                style: Theme.of(context).textTheme.headline6,
               ),
             ),
             Column(
               children: <Widget>[
                 Text(
                   tx.title,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).primaryColorLight,
-                      fontSize: 17),
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(
                   height: 5,
                 ),
                 Text(
                   DateFormat.yMd('en_US').add_jm().format(tx.date),
-                  style: TextStyle(color: Theme.of(context).primaryColorLight),
+                  style: Theme.of(context).textTheme.subtitle2,
                 ),
               ],
             )

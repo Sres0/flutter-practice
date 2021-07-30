@@ -13,8 +13,7 @@ class ContainerCard extends StatelessWidget {
         color: Theme.of(context).primaryColor,
         child: Text(
           text,
-          style: TextStyle(
-              fontSize: 20, color: Theme.of(context).primaryColorLight),
+          style: Theme.of(context).textTheme.headline6,
           textAlign: TextAlign.center,
         ),
       ),
