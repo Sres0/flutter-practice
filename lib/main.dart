@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'widgets/transaction_list.dart';
-// import 'widgets/transaction.dart';
+import 'models/transaction.dart';
 import './widgets/container_card.dart';
 // import './widgets/transaction_card.dart';
 import './widgets/new_transaction.dart';
@@ -22,9 +22,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   final String title;
 
+  MyHomePage({required this.title});
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         backgroundColor: Colors.grey.shade600,
@@ -32,20 +39,31 @@ class MyHomePage extends StatelessWidget {
         builder: (_) {
           return GestureDetector(
             onTap: () {},
-            child: NewTransaction(),
+            child: NewTransaction(_addNewTransaction),
             behavior: HitTestBehavior.opaque,
           );
         });
   }
 
-  MyHomePage({required this.title});
+  void _addNewTransaction(String title, double amount) {
+    final newTx = Transaction(
+      amount: amount,
+      title: title,
+      id: '0',
+      date: DateTime.now(),
+    );
+
+    setState(() {
+      transactions.add(newTx);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey.shade900,
         appBar: AppBar(
-          title: Text(title),
+          title: Text(widget.title),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.add),

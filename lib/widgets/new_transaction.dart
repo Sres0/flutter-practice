@@ -4,7 +4,8 @@ import '../models/transaction.dart';
 import './transaction_list.dart';
 
 class NewTransaction extends StatefulWidget {
-  NewTransaction();
+  final newTx;
+  NewTransaction(Function this.newTx);
 
   @override
   _NewTransactionState createState() => _NewTransactionState();
@@ -14,18 +15,18 @@ class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  void _addNewTransaction(String title, double amount) {
-    final newTx = Transaction(
-      amount: amount,
-      title: title,
-      id: '0',
-      date: DateTime.now(),
-    );
+  // void _addNewTransaction(String title, double amount) {
+  //   final newTx = Transaction(
+  //     amount: amount,
+  //     title: title,
+  //     id: '0',
+  //     date: DateTime.now(),
+  //   );
 
-    setState(() {
-      transactions.add(newTx);
-    });
-  }
+  //   setState(() {
+  //     transactions.add(newTx);
+  //   });
+  // }
 
   void _submitData() {
     final submittedTitle = titleController.text;
@@ -35,7 +36,7 @@ class _NewTransactionState extends State<NewTransaction> {
       return;
     }
 
-    _addNewTransaction(submittedTitle, submittedAmount);
+    widget.newTx(submittedTitle, submittedAmount);
     titleController.clear();
     amountController.clear();
   }
