@@ -33,7 +33,6 @@ class TransactionCard extends StatelessWidget {
               ),
               child: Text(
                 '\$${double.parse((tx.amount).toStringAsFixed(2))}',
-                // '\$${tx.amount}', //^ for 2 decimals
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
