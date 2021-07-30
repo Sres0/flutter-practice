@@ -15,12 +15,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
-        primaryColor: Colors.grey.shade600,
-        primaryColorLight: Colors.white70,
-        primaryColorDark: Colors.grey.shade900,
-        fontFamily: 'Quicksand',
-      ),
+          primarySwatch: Colors.grey,
+          primaryColor: Colors.grey.shade600,
+          primaryColorLight: Colors.white70,
+          primaryColorDark: Colors.grey.shade900,
+          fontFamily: 'Quicksand',
+          appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                    headline6: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Quicksand',
+                  fontSize: 20,
+                )),
+          )),
       home: MyHomePage(title: 'Expenses'),
     );
   }
