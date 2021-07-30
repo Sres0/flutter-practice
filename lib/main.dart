@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.grey.shade600,
         primaryColorLight: Colors.white70,
         primaryColorDark: Colors.grey.shade900,
+        fontFamily: 'Quicksand',
       ),
       home: MyHomePage(title: 'Expenses'),
     );
