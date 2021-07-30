@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'widgets/transaction_list.dart';
 import 'models/transaction.dart';
-import './widgets/container_card.dart';
+import 'widgets/weekly_balance_card.dart';
 // import './widgets/transaction_card.dart';
 import './widgets/new_transaction.dart';
 // import './widgets/user_transactions.dart';
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              ContainerCard('Weekly Balance'),
+              WeeklyBalanceCard('Weekly Balance'),
               TransactionList(),
             ],
           ),

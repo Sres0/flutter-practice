@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-// import 'chart.dart';
+import 'chart.dart';
+// import './transaction_list.dart';
 
-class ContainerCard extends StatelessWidget {
+class WeeklyBalanceCard extends StatelessWidget {
   final String text;
-  ContainerCard(this.text);
+  WeeklyBalanceCard(this.text);
+
+  // List<Transaction>
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class ContainerCard extends StatelessWidget {
               style: Theme.of(context).textTheme.headline6,
               textAlign: TextAlign.center,
             ),
-            // Chart(),
+            Chart(),
           ],
         ),
       ),
