@@ -12,6 +12,19 @@ class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
+  void _submitData() {
+    final submittedTitle = titleController.text;
+    final submittedAmount = double.parse(amountController.text);
+
+    if (submittedTitle.isEmpty || submittedAmount <= 0) {
+      return;
+    }
+
+    widget.addTransaction(submittedTitle, submittedAmount);
+    titleController.clear();
+    amountController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -22,37 +35,34 @@ class _NewTransactionState extends State<NewTransaction> {
         child: Column(
           children: <Widget>[
             TextField(
+              controller: titleController,
+              onSubmitted: (_) => _submitData(),
               decoration: InputDecoration(
                 labelText: 'Title',
                 labelStyle: TextStyle(fontSize: 17),
               ),
-              controller: titleController,
             ),
             TextField(
+              keyboardType: TextInputType.number,
+              controller: amountController,
+              onSubmitted: (_) => _submitData(),
               decoration: InputDecoration(
                 labelText: 'Amount',
                 labelStyle: TextStyle(fontSize: 17),
               ),
-              controller: amountController,
             ),
             SizedBox(height: 10),
             OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.white70, width: 2)),
-              onPressed: () {
-                widget.addTransaction(
-                  titleController.text,
-                  double.parse(amountController.text),
-                );
-                titleController.clear();
-                amountController.clear();
-              },
-              child: Text('Add Transaction',
+                style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Colors.white70, width: 2)),
+                onPressed: () => _submitData(),
+                child: Text(
+                  'Add Transaction',
                   style: TextStyle(
                     color: Colors.white70,
                     fontSize: 20,
-                  )),
-            ),
+                  ),
+                )),
           ],
         ),
       ),
