@@ -36,7 +36,7 @@ class TransactionCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Colors.white70,
+                  color: Theme.of(context).primaryColorLight,
                 ),
               ),
             ),
@@ -46,7 +46,7 @@ class TransactionCard extends StatelessWidget {
                   tx.title,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white70,
+                      color: Theme.of(context).primaryColorLight,
                       fontSize: 17),
                 ),
                 SizedBox(
@@ -54,7 +54,7 @@ class TransactionCard extends StatelessWidget {
                 ),
                 Text(
                   DateFormat.yMd('en_US').add_jm().format(tx.date),
-                  style: TextStyle(color: Colors.white54),
+                  style: TextStyle(color: Theme.of(context).primaryColorLight),
                 ),
               ],
             )

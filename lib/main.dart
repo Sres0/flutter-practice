@@ -16,6 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Expenses',
       theme: ThemeData(
         primarySwatch: Colors.grey,
+        primaryColor: Colors.grey.shade600,
+        primaryColorLight: Colors.white70,
+        primaryColorDark: Colors.grey.shade900,
       ),
       home: MyHomePage(title: 'Expenses'),
     );
@@ -34,7 +37,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
-        backgroundColor: Colors.grey.shade600,
+        backgroundColor: Theme.of(context).primaryColor,
         context: ctx,
         builder: (_) {
           return GestureDetector(
@@ -61,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Theme.of(context).primaryColorDark,
         appBar: AppBar(
           title: Text(widget.title),
           actions: <Widget>[

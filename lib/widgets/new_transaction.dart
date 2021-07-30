@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../models/transaction.dart';
-import './transaction_list.dart';
+// import '../models/transaction.dart';
+// import './transaction_list.dart';
 
 class NewTransaction extends StatefulWidget {
   final newTx;
@@ -15,19 +15,6 @@ class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  // void _addNewTransaction(String title, double amount) {
-  //   final newTx = Transaction(
-  //     amount: amount,
-  //     title: title,
-  //     id: '0',
-  //     date: DateTime.now(),
-  //   );
-
-  //   setState(() {
-  //     transactions.add(newTx);
-  //   });
-  // }
-
   void _submitData() {
     final submittedTitle = titleController.text;
     final submittedAmount = double.parse(amountController.text);
@@ -39,6 +26,8 @@ class _NewTransactionState extends State<NewTransaction> {
     widget.newTx(submittedTitle, submittedAmount);
     titleController.clear();
     amountController.clear();
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -49,7 +38,7 @@ class _NewTransactionState extends State<NewTransaction> {
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: Colors.grey.shade600,
+        color: Theme.of(context).primaryColor,
         child: Container(
           padding: EdgeInsets.all(10),
           child: Column(
@@ -74,12 +63,14 @@ class _NewTransactionState extends State<NewTransaction> {
               SizedBox(height: 10),
               OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: Colors.white70, width: 2)),
+                      side: BorderSide(
+                          color: Theme.of(context).primaryColorLight,
+                          width: 2)),
                   onPressed: () => _submitData(),
                   child: Text(
                     'Add Transaction',
                     style: TextStyle(
-                      color: Colors.white70,
+                      color: Theme.of(context).primaryColorLight,
                       fontSize: 20,
                     ),
                   )),

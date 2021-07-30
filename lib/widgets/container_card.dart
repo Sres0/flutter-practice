@@ -7,11 +7,14 @@ class ContainerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(10),
       child: Card(
-        color: Colors.grey.shade800,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        color: Theme.of(context).primaryColor,
         child: Text(
           text,
-          style: TextStyle(fontSize: 20, color: Colors.white70),
+          style: TextStyle(
+              fontSize: 20, color: Theme.of(context).primaryColorLight),
           textAlign: TextAlign.center,
         ),
       ),
