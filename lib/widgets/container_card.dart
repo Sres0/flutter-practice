@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// import 'chart.dart';
+
 class ContainerCard extends StatelessWidget {
   final String text;
   ContainerCard(this.text);
@@ -11,10 +13,15 @@ class ContainerCard extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         color: Theme.of(context).primaryColor,
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.headline6,
-          textAlign: TextAlign.center,
+        child: Column(
+          children: [
+            Text(
+              text,
+              style: Theme.of(context).textTheme.headline6,
+              textAlign: TextAlign.center,
+            ),
+            // Chart(),
+          ],
         ),
       ),
     );
