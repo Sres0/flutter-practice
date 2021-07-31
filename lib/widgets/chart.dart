@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../models/transaction.dart';
 import './transaction_list.dart';
+import './chart_bar.dart';
 
 class Chart extends StatefulWidget {
   Chart();
@@ -40,11 +41,15 @@ class _ChartState extends State<Chart> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Theme.of(context).primaryColor,
+      elevation: 0,
       margin: EdgeInsets.all(10),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: transactionValues.map(
           (value) {
-            return Text('${value['day'].toString()}: ${value['amount']}');
+            // return Text('${value['day'].toString()}: ${value['amount']}');
+            return ChartBar(value['day'].toString());
           },
         ).toList(),
       ),
