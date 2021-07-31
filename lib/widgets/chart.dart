@@ -12,22 +12,22 @@ class Chart extends StatefulWidget {
 }
 
 class _ChartState extends State<Chart> {
-  List<Transaction> get weekTransactions {
+  List<Transaction> get _weekTransactions {
     return transactions.where((tx) {
       return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
     }).toList();
   }
 
-  List<Map<String, Object>> get transactionValues {
+  List<Map<String, Object>> get _transactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
       var totalSum = 0.0;
 
-      for (var i = 0; i < weekTransactions.length; i++) {
-        if (weekTransactions[i].date.day == weekDay.day &&
-            weekTransactions[i].date.month == weekDay.month &&
-            weekTransactions[i].date.year == weekDay.year) {
-          totalSum += weekTransactions[i].amount;
+      for (var i = 0; i < _weekTransactions.length; i++) {
+        if (_weekTransactions[i].date.day == weekDay.day &&
+            _weekTransactions[i].date.month == weekDay.month &&
+            _weekTransactions[i].date.year == weekDay.year) {
+          totalSum += _weekTransactions[i].amount;
         }
       }
 
@@ -35,6 +35,12 @@ class _ChartState extends State<Chart> {
         'day': DateFormat.E().format(weekDay).substring(0, 2),
         'amount': totalSum,
       };
+    });
+  }
+
+  double get _spendingTotal {
+    return _transactionValues.fold(0.0, (sum, value) {
+      return (sum + (value['amount'] as double));
     });
   }
 
@@ -46,10 +52,13 @@ class _ChartState extends State<Chart> {
       margin: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: transactionValues.map(
+        children: _transactionValues.map(
           (value) {
-            // return Text('${value['day'].toString()}: ${value['amount']}');
-            return ChartBar(value['day'].toString());
+            return ChartBar(
+              value['day'].toString(),
+              (value['amount'] as double),
+              (value['amount'] as double) / _spendingTotal,
+            );
           },
         ).toList(),
       ),

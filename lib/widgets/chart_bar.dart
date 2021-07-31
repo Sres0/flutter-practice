@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 
 class ChartBar extends StatelessWidget {
   final String label;
-  // final double spent;
-  // final double spendingPercentage = 0.0;
-  // ChartBar(this.label, this.spent, this.spendingPercentage);
-  ChartBar(this.label);
+  final double spent;
+  final double spendingPercentage;
+  ChartBar(this.label, this.spent, this.spendingPercentage);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Text('\$${spent.toStringAsFixed(0)}'),
-        Text('\$$label'),
+        Text('\$${spent.toStringAsFixed(0)}'),
         SizedBox(height: 4),
         Container(
           height: 60,
           width: 10,
           child: Stack(
+            alignment: AlignmentDirectional.bottomEnd,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -28,7 +27,16 @@ class ChartBar extends StatelessWidget {
                   ),
                   color: Theme.of(context).primaryColorLight,
                 ),
-              )
+              ),
+              FractionallySizedBox(
+                heightFactor: spendingPercentage,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Theme.of(context).primaryColorDark,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

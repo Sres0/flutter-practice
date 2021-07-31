@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'Expenses',
       theme: ThemeData(
           primarySwatch: Colors.grey,
-          primaryColor: Colors.grey.shade600,
-          primaryColorLight: Colors.white70,
+          primaryColor: Colors.grey.shade700,
+          primaryColorLight: Colors.grey.shade400,
           primaryColorDark: Colors.grey.shade900,
           fontFamily: 'Quicksand',
           textTheme: TextTheme(
