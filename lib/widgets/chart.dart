@@ -13,7 +13,6 @@ class Chart extends StatefulWidget {
 class _ChartState extends State<Chart> {
   List<Transaction> get weekTransactions {
     return transactions.where((tx) {
-      print(tx.date);
       return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
     }).toList();
   }
@@ -21,7 +20,7 @@ class _ChartState extends State<Chart> {
   List<Map<String, Object>> get transactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
-      var totalSum;
+      var totalSum = 0.0;
 
       for (var i = 0; i < weekTransactions.length; i++) {
         if (weekTransactions[i].date.day == weekDay.day &&
@@ -43,13 +42,17 @@ class _ChartState extends State<Chart> {
     return Card(
       margin: EdgeInsets.all(10),
       child: Row(
-          // children: transactionValues.map(
-          //   (value) {
-          //     print(value['day']);
-          //     return Text('Hello!');
-          //   },
-          // ).toList(),
-          ),
+        //   children: [
+        //   ...transactionValues.map((tx) {
+        //     return Text('hiya!');
+        //   }).toList(),
+        // ]),
+        children: transactionValues.map(
+          (value) {
+            return Text('${value['day'].toString()}: ${value['amount']}');
+          },
+        ).toList(),
+      ),
     );
   }
 }
