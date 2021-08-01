@@ -26,7 +26,9 @@ List<Transaction> transactions = [
 ];
 
 class TransactionList extends StatelessWidget {
-  TransactionList();
+  final Function deleteTransaction;
+
+  TransactionList(this.deleteTransaction);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +38,7 @@ class TransactionList extends StatelessWidget {
           ? EmptyTransactions()
           : ListView.builder(
               itemBuilder: (ctx, index) {
-                return TransactionCard(index);
+                return TransactionCard(index, deleteTransaction);
               },
               itemCount: transactions.length,
             ),
