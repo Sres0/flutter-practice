@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _addNewTransaction(String title, double amount) {
-    final newTx = Transaction(
+    final _newTx = Transaction(
       amount: amount,
       title: title,
       id: '0',
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     setState(() {
-      transactions.add(newTx);
+      transactions.add(_newTx);
     });
   }
 
