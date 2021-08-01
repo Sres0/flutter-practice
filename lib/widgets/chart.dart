@@ -18,7 +18,7 @@ class _ChartState extends State<Chart> {
     }).toList();
   }
 
-  List<Map<String, Object>> get _transactionValues {
+  List<Map<String, Object>> get _weekTransactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
       var totalSum = 0.0;
@@ -35,11 +35,11 @@ class _ChartState extends State<Chart> {
         'day': DateFormat.E().format(weekDay).substring(0, 2),
         'amount': totalSum,
       };
-    });
+    }).reversed.toList();
   }
 
   double get _spendingTotal {
-    return _transactionValues.fold(0.0, (sum, value) {
+    return _weekTransactionValues.fold(0.0, (sum, value) {
       return (sum + (value['amount'] as double));
     });
   }
@@ -52,7 +52,7 @@ class _ChartState extends State<Chart> {
       margin: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: _transactionValues.map(
+        children: _weekTransactionValues.map(
           (value) {
             return Flexible(
               fit: FlexFit.tight,
