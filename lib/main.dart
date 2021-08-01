@@ -6,6 +6,7 @@ import 'widgets/weekly_balance_card.dart';
 // import './widgets/transaction_card.dart';
 import './widgets/new_transaction.dart';
 // import './widgets/user_transactions.dart';
+import './constants/default_theme.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,38 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Expenses',
-      theme: ThemeData(
-          primarySwatch: Colors.grey,
-          primaryColor: Colors.grey.shade700,
-          primaryColorLight: Colors.grey.shade400,
-          primaryColorDark: Colors.grey.shade900,
-          fontFamily: 'Quicksand',
-          textTheme: TextTheme(
-              headline4: TextStyle(
-                fontFamily: 'Quicksand',
-                color: Colors.white70,
-              ),
-              headline6: TextStyle(
-                fontFamily: 'Quicksand',
-                fontWeight: FontWeight.bold,
-                color: Colors.white70,
-              ),
-              subtitle1: TextStyle(
-                fontFamily: 'Quicksand',
-                color: Colors.white70,
-              ),
-              subtitle2: TextStyle(
-                fontFamily: 'Quicksand',
-                color: Colors.white54,
-              )),
-          buttonColor: Colors.grey.shade700,
-          appBarTheme: AppBarTheme(
-            textTheme: ThemeData.light().textTheme.copyWith(
-                    headline6: TextStyle(
-                  fontFamily: 'Quicksand',
-                  fontSize: 20,
-                )),
-          )),
+      theme: themeData(),
       home: MyHomePage(title: 'Expenses'),
     );
   }
@@ -53,7 +23,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   final String title;
-
   MyHomePage({required this.title});
 
   @override
