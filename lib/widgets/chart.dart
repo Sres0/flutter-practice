@@ -51,13 +51,15 @@ class _ChartState extends State<Chart> {
       elevation: 0,
       margin: EdgeInsets.all(10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: _transactionValues.map(
           (value) {
             return ChartBar(
               value['day'].toString(),
               (value['amount'] as double),
-              (value['amount'] as double) / _spendingTotal,
+              _spendingTotal == 0
+                  ? 0
+                  : (value['amount'] as double) / _spendingTotal,
             );
           },
         ).toList(),

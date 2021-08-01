@@ -7,8 +7,6 @@ class WeeklyBalanceCard extends StatelessWidget {
   final String text;
   WeeklyBalanceCard(this.text);
 
-  // List<Transaction>
-
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -10,11 +10,14 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('\$${spent.toStringAsFixed(0)}'),
+        Text(
+          '\$${spent.toStringAsFixed(0)}',
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
         SizedBox(height: 4),
         Container(
-          height: 60,
-          width: 10,
+          height: 80,
+          width: 15,
           child: Stack(
             alignment: AlignmentDirectional.bottomEnd,
             children: [
@@ -41,6 +44,7 @@ class ChartBar extends StatelessWidget {
           ),
         ),
         SizedBox(height: 4),
+        Text(label, style: Theme.of(context).textTheme.subtitle2),
       ],
     );
   }

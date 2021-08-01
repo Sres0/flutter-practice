@@ -15,7 +15,7 @@ class TransactionCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      color: Colors.grey.shade700,
+      color: Theme.of(context).primaryColor,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Row(
@@ -27,7 +27,7 @@ class TransactionCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 shape: BoxShape.rectangle,
                 border: Border.all(
-                  color: Colors.white70,
+                  color: Theme.of(context).primaryColorLight,
                   width: 2,
                 ),
               ),
