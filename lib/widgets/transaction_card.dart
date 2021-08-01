@@ -31,7 +31,7 @@ class TransactionCard extends StatelessWidget {
           DateFormat.yMd().format(transactions[index].date).toString(),
           style: Theme.of(context).textTheme.subtitle2,
         ),
-        trailing: null,
+        trailing: Icon(Icons.delete),
       ),
     );
   }

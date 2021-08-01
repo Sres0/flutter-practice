@@ -30,6 +30,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void _addNewTransaction(String title, double amount, DateTime date) {
+    final _newTx = Transaction(
+      amount: amount,
+      title: title,
+      date: date,
+      id: DateTime.now().toString(),
+    );
+
+    setState(() {
+      transactions.add(_newTx);
+    });
+  }
+
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         backgroundColor: Theme.of(context).primaryColor,
@@ -43,19 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
         });
-  }
-
-  void _addNewTransaction(String title, double amount) {
-    final _newTx = Transaction(
-      amount: amount,
-      title: title,
-      id: '0',
-      date: DateTime.now(),
-    );
-
-    setState(() {
-      transactions.add(_newTx);
-    });
   }
 
   @override
@@ -81,10 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: Theme.of(context).primaryColorLight,
           onPressed: () => _startAddNewTransaction(context),
-          child: Icon(Icons.add, color: Theme.of(context).primaryColorLight),
+          child: Icon(Icons.add, color: Theme.of(context).primaryColor),
         ));
   }
 }

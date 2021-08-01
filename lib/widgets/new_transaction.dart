@@ -21,11 +21,14 @@ class _NewTransactionState extends State<NewTransaction> {
     final _submittedTitle = _titleController.text;
     final _submittedAmount = double.parse(_amountController.text);
 
-    if (_submittedTitle.isEmpty || _submittedAmount <= 0) {
+    if (_submittedTitle.isEmpty ||
+        _amountController.text.isEmpty ||
+        _submittedAmount <= 0 ||
+        _pickedDate == null) {
       return;
     }
 
-    widget.newTx(_submittedTitle, _submittedAmount);
+    widget.newTx(_submittedTitle, _submittedAmount, _pickedDate);
     _titleController.clear();
     _amountController.clear();
 
@@ -37,7 +40,7 @@ class _NewTransactionState extends State<NewTransaction> {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2021),
-      lastDate: DateTime.now().add(Duration(days: 1)),
+      lastDate: DateTime.now(),
     ).then((picked) {
       setState(() {
         _pickedDate = picked;
@@ -57,52 +60,55 @@ class _NewTransactionState extends State<NewTransaction> {
         color: Theme.of(context).primaryColor,
         child: Container(
           padding: EdgeInsets.all(10),
-          child: Column(
-            children: <Widget>[
-              TextField(
-                controller: _titleController,
-                onSubmitted: (_) => _submitData(),
-                decoration: InputDecoration(
-                  labelText: 'Title',
-                  labelStyle: Theme.of(context).textTheme.subtitle1,
+          child: Expanded(
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  controller: _titleController,
+                  onSubmitted: (_) => _submitData(),
+                  decoration: InputDecoration(
+                    labelText: 'Title',
+                    labelStyle: Theme.of(context).textTheme.subtitle1,
+                  ),
                 ),
-              ),
-              TextField(
-                keyboardType: TextInputType.number,
-                controller: _amountController,
-                onSubmitted: (_) => _submitData(),
-                decoration: InputDecoration(
-                  labelText: 'Amount',
-                  labelStyle: Theme.of(context).textTheme.subtitle1,
+                TextField(
+                  keyboardType: TextInputType.number,
+                  controller: _amountController,
+                  onSubmitted: (_) => _submitData(),
+                  decoration: InputDecoration(
+                    labelText: 'Amount',
+                    labelStyle: Theme.of(context).textTheme.subtitle1,
+                  ),
                 ),
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Text(
-                      _pickedDate == null
-                          ? 'No date chosen!'
-                          : DateFormat.yMd().format(_pickedDate!).toString(),
-                      style: Theme.of(context).textTheme.subtitle2),
-                  TextButton(
-                      onPressed: () => _showDatePicker(),
-                      child: Text(
-                        'Choose Date',
-                        style: Theme.of(context).textTheme.subtitle1,
-                      ))
-                ],
-              ),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    side: BorderSide(
-                        color: Theme.of(context).primaryColorLight, width: 2)),
-                onPressed: _submitData,
-                child: Text(
-                  'Add Transaction',
-                  style: Theme.of(context).textTheme.headline6,
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    Text(
+                        _pickedDate == null
+                            ? 'No date chosen!'
+                            : 'Date: ${DateFormat.yMd().format(_pickedDate!).toString()}',
+                        style: Theme.of(context).textTheme.subtitle2),
+                    TextButton(
+                        onPressed: () => _showDatePicker(),
+                        child: Text(
+                          'Choose Date',
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ))
+                  ],
                 ),
-              ),
-            ],
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      side: BorderSide(
+                          color: Theme.of(context).primaryColorLight,
+                          width: 2)),
+                  onPressed: _submitData,
+                  child: Text(
+                    'Add Transaction',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
