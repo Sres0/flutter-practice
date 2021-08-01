@@ -49,36 +49,42 @@ class TransactionList extends StatelessWidget {
             )
           : ListView.builder(
               itemBuilder: (ctx, index) {
-                return Card(
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: ListTile(
-                    tileColor: Theme.of(context).primaryColor,
-                    leading: Padding(
-                      padding: EdgeInsets.all(2),
-                      child: CircleAvatar(
-                        radius: 30,
-                        child: FittedBox(
-                            child: Text('\$${transactions[index].amount}')),
-                      ),
-                    ),
-                    title: Text(
-                      transactions[index].title,
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    subtitle: Text(
-                      transactions[index].date.toString(),
-                      style: Theme.of(context).textTheme.subtitle2,
-                    ),
-                    trailing: null,
-                  ),
-                );
-                // return TransactionCard(transactions[index]);
+                return TransactionCard(index);
               },
               itemCount: transactions.length,
             ),
+    );
+  }
+}
+
+class TransactionCard extends StatelessWidget {
+  final int index;
+  const TransactionCard(this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: Theme.of(context).primaryColor,
+      child: ListTile(
+        leading: Padding(
+          padding: EdgeInsets.all(2),
+          child: CircleAvatar(
+            radius: 30,
+            child: FittedBox(child: Text('\$${transactions[index].amount}')),
+          ),
+        ),
+        title: Text(
+          transactions[index].title,
+          style: Theme.of(context).textTheme.headline6,
+        ),
+        subtitle: Text(
+          transactions[index].date.toString(),
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+        trailing: null,
+      ),
     );
   }
 }
