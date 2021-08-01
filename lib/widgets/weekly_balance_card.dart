@@ -10,19 +10,22 @@ class WeeklyBalanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         color: Theme.of(context).primaryColor,
-        child: Column(
-          children: [
-            Text(
-              text,
-              style: Theme.of(context).textTheme.headline6,
-              textAlign: TextAlign.center,
-            ),
-            Chart(),
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(5.0),
+          child: Column(
+            children: [
+              Text(
+                text,
+                style: Theme.of(context).textTheme.headline6,
+                textAlign: TextAlign.center,
+              ),
+              Chart(),
+            ],
+          ),
         ),
       ),
     );

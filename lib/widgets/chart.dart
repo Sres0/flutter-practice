@@ -54,12 +54,15 @@ class _ChartState extends State<Chart> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: _transactionValues.map(
           (value) {
-            return ChartBar(
-              value['day'].toString(),
-              (value['amount'] as double),
-              _spendingTotal == 0
-                  ? 0
-                  : (value['amount'] as double) / _spendingTotal,
+            return Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(
+                value['day'].toString(),
+                (value['amount'] as double),
+                _spendingTotal == 0
+                    ? 0
+                    : (value['amount'] as double) / _spendingTotal,
+              ),
             );
           },
         ).toList(),
