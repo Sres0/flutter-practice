@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'Quicksand',
                 color: Colors.white54,
               )),
+          buttonColor: Colors.grey.shade700,
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.copyWith(
                     headline6: TextStyle(
@@ -65,10 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).primaryColor,
         context: ctx,
         builder: (_) {
-          return GestureDetector(
-            onTap: () {},
-            child: NewTransaction(_addNewTransaction),
-            behavior: HitTestBehavior.opaque,
+          return SingleChildScrollView(
+            child: GestureDetector(
+              onTap: () {},
+              child: NewTransaction(_addNewTransaction),
+              behavior: HitTestBehavior.opaque,
+            ),
           );
         });
   }
@@ -110,8 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Theme.of(context).primaryColor,
           onPressed: () => _startAddNewTransaction(context),
-          child: Icon(Icons.add),
+          child: Icon(Icons.add, color: Theme.of(context).primaryColorLight),
         ));
   }
 }

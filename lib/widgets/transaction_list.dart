@@ -30,6 +30,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10),
       height: 400,
       child: transactions.isEmpty
           ? EmptyTransactions()
@@ -44,9 +45,7 @@ class TransactionList extends StatelessWidget {
 }
 
 class EmptyTransactions extends StatelessWidget {
-  const EmptyTransactions({
-    Key? key,
-  }) : super(key: key);
+  const EmptyTransactions();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +75,7 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      margin: EdgeInsets.symmetric(vertical: 5),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: Theme.of(context).primaryColor,
       child: ListTile(
