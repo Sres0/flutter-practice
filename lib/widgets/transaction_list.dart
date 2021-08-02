@@ -74,20 +74,25 @@ class EmptyTransactions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Text(
-          'No transactions yet',
-          style: Theme.of(context).textTheme.headline4,
-        ),
-        Flexible(
-            child: Image.asset(
-          'assets/images/no_transactions.png',
-          fit: BoxFit.scaleDown,
-          width: MediaQuery.of(context).size.width * 0.6,
-        ))
-      ],
+    return LayoutBuilder(
+      builder: (ctx, constraints) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              'No transactions yet',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            Container(
+              height: constraints.maxHeight * 0.6,
+              child: Image.asset(
+                'assets/images/no_transactions.png',
+                fit: BoxFit.scaleDown,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

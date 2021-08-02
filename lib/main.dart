@@ -70,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     final _appBar = AppBar(
       title: Text(widget.title),
       actions: <Widget>[
@@ -79,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         )
       ],
     );
-    final availableHeight = MediaQuery.of(context).size.height -
+    final _availableHeight = MediaQuery.of(context).size.height -
         _appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
 
@@ -87,33 +89,37 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).primaryColorDark,
         appBar: _appBar,
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Show chart',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6!
-                      .copyWith(fontWeight: FontWeight.normal),
-                ),
-                Switch(
-                    value: _showChart,
-                    onChanged: (boolean) {
-                      setState(() {
-                        _showChart = boolean;
-                      });
-                      print(_showChart);
-                    }),
-              ],
-            ),
+            _isLandscape
+                ? Container(
+                    height: _availableHeight * 0.2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Show chart',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(fontWeight: FontWeight.normal),
+                        ),
+                        Switch(
+                            value: _showChart,
+                            onChanged: (boolean) {
+                              setState(() {
+                                _showChart = boolean;
+                              });
+                            }),
+                      ],
+                    ),
+                  )
+                : Container(height: _availableHeight * 0.3, child: Chart()),
             _showChart
-                ? Container(height: availableHeight * 0.3, child: Chart())
+                ? Container(height: _availableHeight * 0.7, child: Chart())
                 : Container(
-                    height: availableHeight * 0.7,
+                    height: _availableHeight * 0.7,
                     child: TransactionList(_deleteTransaction)),
           ],
         ),
