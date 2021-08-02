@@ -5,24 +5,48 @@ import '../models/transaction.dart';
 import './transaction_card.dart';
 
 List<Transaction> transactions = [
-  // Transaction(
-  //   amount: 0.99,
-  //   date: DateTime.now(),
-  //   id: '0',
-  //   title: 'No one ever',
-  // ),
-  // Transaction(
-  //   amount: 10.55,
-  //   date: DateTime.now(),
-  //   id: '1',
-  //   title: 'Easy peasy',
-  // ),
-  // Transaction(
-  //   amount: 99.99,
-  //   date: DateTime.now(),
-  //   id: '2',
-  //   title: 'Oh dear',
-  // ),
+  Transaction(
+    amount: 0.99,
+    date: DateTime.now().subtract(Duration(days: 5)),
+    id: '${DateTime.now().subtract(Duration(days: 5))}',
+    title: 'Books',
+  ),
+  Transaction(
+    amount: 5.55,
+    date: DateTime.now().subtract(Duration(days: 6)),
+    id: '${DateTime.now().subtract(Duration(days: 6))}',
+    title: 'Amazon Prime Video',
+  ),
+  Transaction(
+    amount: 3.50,
+    date: DateTime.now().subtract(Duration(days: 4)),
+    id: '${DateTime.now().subtract(Duration(days: 4))}',
+    title: 'HBO Max',
+  ),
+  Transaction(
+    amount: 25.99,
+    date: DateTime.now().subtract(Duration(days: 1)),
+    id: '${DateTime.now().subtract(Duration(days: 1))}',
+    title: 'Domestika PRO',
+  ),
+  Transaction(
+    amount: 10.50,
+    date: DateTime.now().subtract(Duration(days: 3)),
+    id: '${DateTime.now().subtract(Duration(days: 3))}',
+    title: 'Credit Card',
+  ),
+  Transaction(
+    amount: 7.60,
+    date: DateTime.now().subtract(Duration(days: 2)),
+    id: '${DateTime.now().subtract(Duration(days: 2))}',
+    title: 'Domestika Course',
+  ),
+  Transaction(
+    amount: 5.48,
+    date: DateTime.now(),
+    id: '${DateTime.now()}',
+    title: 'Other',
+  ),
 ];
 
 class TransactionList extends StatelessWidget {
@@ -33,7 +57,6 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
-      height: 400,
       child: transactions.isEmpty
           ? EmptyTransactions()
           : ListView.builder(
@@ -52,19 +75,18 @@ class EmptyTransactions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Text(
           'No transactions yet',
           style: Theme.of(context).textTheme.headline4,
         ),
-        Container(
-            height: 300,
-            padding: EdgeInsets.all(20),
+        Flexible(
             child: Image.asset(
-              'assets/images/no_transactions.png',
-              fit: BoxFit.cover,
-            ))
+          'assets/images/no_transactions.png',
+          fit: BoxFit.scaleDown,
+          width: MediaQuery.of(context).size.width * 0.6,
+        ))
       ],
     );
   }

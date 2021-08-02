@@ -17,6 +17,7 @@ class WeeklyBalanceCard extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(5.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 text,
