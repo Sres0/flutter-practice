@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -51,13 +54,15 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
       padding: EdgeInsets.all(10),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: Theme.of(context).primaryColor,
+        color: _theme.primaryColor,
         child: Container(
           padding: EdgeInsets.only(
             top: 10,
@@ -68,23 +73,9 @@ class _NewTransactionState extends State<NewTransaction> {
           child: Expanded(
             child: Column(
               children: <Widget>[
-                TextField(
-                  controller: _titleController,
-                  onSubmitted: (_) => _submitData(),
-                  decoration: InputDecoration(
-                    labelText: 'Title',
-                    labelStyle: Theme.of(context).textTheme.subtitle1,
-                  ),
-                ),
-                TextField(
-                  keyboardType: TextInputType.number,
-                  controller: _amountController,
-                  onSubmitted: (_) => _submitData(),
-                  decoration: InputDecoration(
-                    labelText: 'Amount',
-                    labelStyle: Theme.of(context).textTheme.subtitle1,
-                  ),
-                ),
+                DefaultTextField(_titleController, _submitData, 'Title', false),
+                DefaultTextField(
+                    _amountController, _submitData, 'Amount', true),
                 SizedBox(height: 10),
                 Row(
                   children: [
@@ -92,24 +83,23 @@ class _NewTransactionState extends State<NewTransaction> {
                         _pickedDate == null
                             ? 'No date chosen!'
                             : 'Date: ${DateFormat.yMd().format(_pickedDate!).toString()}',
-                        style: Theme.of(context).textTheme.subtitle2),
+                        style: _theme.textTheme.subtitle2),
                     TextButton(
                         onPressed: () => _showDatePicker(),
                         child: Text(
                           'Choose Date',
-                          style: Theme.of(context).textTheme.subtitle1,
+                          style: _theme.textTheme.subtitle1,
                         ))
                   ],
                 ),
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                       side: BorderSide(
-                          color: Theme.of(context).primaryColorLight,
-                          width: 2)),
+                          color: _theme.primaryColorLight, width: 2)),
                   onPressed: _submitData,
                   child: Text(
                     'Add Transaction',
-                    style: Theme.of(context).textTheme.headline6,
+                    style: _theme.textTheme.headline6,
                   ),
                 ),
               ],
@@ -118,5 +108,34 @@ class _NewTransactionState extends State<NewTransaction> {
         ),
       ),
     );
+  }
+}
+
+class DefaultTextField extends StatelessWidget {
+  final TextEditingController amountController;
+  final Function submitData;
+  final String text;
+  final bool numericPad;
+
+  DefaultTextField(
+      this.amountController, this.submitData, this.text, this.numericPad);
+
+  @override
+  Widget build(BuildContext context) {
+    return Platform.isIOS
+        ? CupertinoTextField(
+            placeholder: text,
+            onSubmitted: (_) => submitData(),
+          )
+        : TextField(
+            keyboardType:
+                numericPad ? TextInputType.number : TextInputType.emailAddress,
+            controller: amountController,
+            onSubmitted: (_) => submitData(),
+            decoration: InputDecoration(
+              labelText: text,
+              labelStyle: Theme.of(context).textTheme.subtitle1,
+            ),
+          );
   }
 }

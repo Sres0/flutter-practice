@@ -18,11 +18,17 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Expenses',
-      theme: themeData(),
-      home: MyHomePage(title: 'Expenses'),
-    );
+    return Platform.isIOS
+        ? CupertinoApp(
+            title: 'Expenses',
+            theme: cupertinoThemeData(),
+            home: MyHomePage(title: 'Expenses'),
+          )
+        : MaterialApp(
+            title: 'Expenses',
+            theme: themeData(),
+            home: MyHomePage(title: 'Expenses'),
+          );
   }
 }
 
@@ -83,8 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   MainAxisSize.min, //takes all the space it needs for child
               children: <Widget>[
                 GestureDetector(
-                    child: Icon(CupertinoIcons.add),
-                    onTap: () => _startAddNewTransaction(context)),
+                  child: Icon(CupertinoIcons.add),
+                  onTap: () => _startAddNewTransaction(context),
+                ),
               ],
             ))
         : AppBar(
@@ -99,41 +106,45 @@ class _MyHomePageState extends State<MyHomePage> {
     final _availableHeight = _mediaQuery.size.height -
         _appBar.preferredSize.height -
         _mediaQuery.padding.top;
-    final _pageBody = Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        _isLandscape
-            ? Container(
-                height: _availableHeight * 0.2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Show chart',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .copyWith(fontWeight: FontWeight.normal),
-                    ),
-                    Switch.adaptive(
-                        //for iOS
-                        value: _showChart,
-                        onChanged: (boolean) {
-                          setState(() {
-                            _showChart = boolean;
-                          });
-                        }),
-                  ],
+    final _pageBody = SafeArea(
+      //Respected reserved areas on screen
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          _isLandscape
+              ? Container(
+                  height: _availableHeight * 0.2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Show chart',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(fontWeight: FontWeight.normal),
+                      ),
+                      Switch.adaptive(
+                          //for iOS
+                          value: _showChart,
+                          onChanged: (boolean) {
+                            setState(() {
+                              _showChart = boolean;
+                            });
+                          }),
+                    ],
+                  ),
+                )
+              : Container(height: _availableHeight * 0.3, child: Chart()),
+          _showChart
+              ? Container(height: _availableHeight * 0.7, child: Chart())
+              : Container(
+                  height: _availableHeight * 0.7,
+                  child: TransactionList(_deleteTransaction),
                 ),
-              )
-            : Container(height: _availableHeight * 0.3, child: Chart()),
-        _showChart
-            ? Container(height: _availableHeight * 0.7, child: Chart())
-            : Container(
-                height: _availableHeight * 0.7,
-                child: TransactionList(_deleteTransaction)),
-      ],
+        ],
+      ),
     );
 
     return Platform.isIOS
@@ -147,14 +158,11 @@ class _MyHomePageState extends State<MyHomePage> {
             body: _pageBody,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
-            floatingActionButton: Platform.isIOS //iOS
-                ? Container()
-                : FloatingActionButton(
-                    backgroundColor: Theme.of(context).primaryColorLight,
-                    onPressed: () => _startAddNewTransaction(context),
-                    child:
-                        Icon(Icons.add, color: Theme.of(context).primaryColor),
-                  ),
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: Theme.of(context).primaryColorLight,
+              onPressed: () => _startAddNewTransaction(context),
+              child: Icon(Icons.add, color: Theme.of(context).primaryColor),
+            ),
           );
   }
 }

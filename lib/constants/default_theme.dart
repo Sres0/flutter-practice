@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ThemeData themeData() {
@@ -24,7 +27,7 @@ ThemeData themeData() {
         ),
         subtitle2: TextStyle(
           fontFamily: 'Quicksand',
-          color: Colors.white54,
+          color: Colors.white70,
         )),
     buttonColor: Colors.grey.shade700,
     appBarTheme: AppBarTheme(
@@ -32,6 +35,21 @@ ThemeData themeData() {
         headline3: TextStyle(
           color: Colors.white54,
         ),
+      ),
+    ),
+  );
+}
+
+CupertinoThemeData cupertinoThemeData() {
+  return CupertinoThemeData(
+    primaryColor: Colors.grey.shade700,
+    primaryContrastingColor: Colors.grey.shade400,
+    barBackgroundColor: Colors.grey.shade900,
+    textTheme: CupertinoTextThemeData(
+      primaryColor: Colors.white70,
+      textStyle: TextStyle(
+        fontFamily: 'Quicksand',
+        color: Colors.white70,
       ),
     ),
   );
