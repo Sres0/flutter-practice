@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 
-import 'widgets/transaction_list.dart';
-import 'models/transaction.dart';
-import 'widgets/weekly_balance_card.dart';
-// import './widgets/transaction_card.dart';
-import './widgets/new_transaction.dart';
-// import './widgets/user_transactions.dart';
 import './constants/default_theme.dart';
+import './models/transaction.dart';
+import './widgets/transaction_list.dart';
+import './widgets/new_transaction.dart';
+import './widgets/chart.dart';
+// import 'widgets/weekly_balance_card.dart';
+// import './widgets/transaction_card.dart';
+// import './widgets/user_transactions.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  return runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -69,9 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  bool _showChart = false;
+
   @override
   Widget build(BuildContext context) {
-    final appBar = AppBar(
+    final _appBar = AppBar(
       title: Text(widget.title),
       actions: <Widget>[
         IconButton(
@@ -80,30 +79,43 @@ class _MyHomePageState extends State<MyHomePage> {
         )
       ],
     );
+    final availableHeight = MediaQuery.of(context).size.height -
+        _appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
 
     return Scaffold(
         backgroundColor: Theme.of(context).primaryColorDark,
-        appBar: appBar,
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                height: (MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
-                    0.3,
-                child: WeeklyBalanceCard('Weekly Balance'),
-              ),
-              Container(
-                  height: (MediaQuery.of(context).size.height -
-                          appBar.preferredSize.height -
-                          MediaQuery.of(context).padding.top) *
-                      0.7,
-                  child: TransactionList(_deleteTransaction)),
-            ],
-          ),
+        appBar: _appBar,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Show chart',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontWeight: FontWeight.normal),
+                ),
+                Switch(
+                    value: _showChart,
+                    onChanged: (boolean) {
+                      setState(() {
+                        _showChart = boolean;
+                      });
+                      print(_showChart);
+                    }),
+              ],
+            ),
+            _showChart
+                ? Container(height: availableHeight * 0.3, child: Chart())
+                : Container(
+                    height: availableHeight * 0.7,
+                    child: TransactionList(_deleteTransaction)),
+          ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(

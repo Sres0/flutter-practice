@@ -46,22 +46,34 @@ class _ChartState extends State<Chart> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: _weekTransactionValues.map(
-        (value) {
-          return Flexible(
-            fit: FlexFit.tight,
-            child: ChartBar(
-              value['day'].toString(),
-              (value['amount'] as double),
-              _spendingTotal == 0
-                  ? 0
-                  : (value['amount'] as double) / _spendingTotal,
-            ),
-          );
-        },
-      ).toList(),
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        color: Theme.of(context).primaryColor,
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: _weekTransactionValues.map(
+              (value) {
+                return Flexible(
+                  fit: FlexFit.tight,
+                  child: ChartBar(
+                    value['day'].toString(),
+                    (value['amount'] as double),
+                    _spendingTotal == 0
+                        ? 0
+                        : (value['amount'] as double) / _spendingTotal,
+                  ),
+                );
+              },
+            ).toList(),
+          ),
+          //   ],
+          // ),
+        ),
+      ),
     );
   }
 }
