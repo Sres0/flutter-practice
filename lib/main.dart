@@ -101,13 +101,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  bool _showChart = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final _mediaQuery = MediaQuery.of(context);
-    final _isLandscape = _mediaQuery.orientation == Orientation.landscape;
-    final PreferredSizeWidget _appBar = (Platform.isIOS
+  PreferredSizeWidget _buildAppBar() {
+    return (Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text('Expenses'),
             trailing: Row(
@@ -129,6 +124,15 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ],
           ) as PreferredSizeWidget);
+  }
+
+  bool _showChart = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final _mediaQuery = MediaQuery.of(context);
+    final _isLandscape = _mediaQuery.orientation == Orientation.landscape;
+    final PreferredSizeWidget _appBar = _buildAppBar();
     final _availableHeight = _mediaQuery.size.height -
         _appBar.preferredSize.height -
         _mediaQuery.padding.top;

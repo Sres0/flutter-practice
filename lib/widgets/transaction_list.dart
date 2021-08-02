@@ -59,11 +59,19 @@ class TransactionList extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: transactions.isEmpty
           ? EmptyTransactions()
-          : ListView.builder(
-              itemBuilder: (ctx, index) {
-                return TransactionCard(index, deleteTransaction);
-              },
-              itemCount: transactions.length,
+          // : ListView.builder(
+          //     itemBuilder: (ctx, index) {
+          //       return TransactionCard(index, deleteTransaction);
+          //     },
+          //     itemCount: transactions.length,
+          //   ),
+          : ListView(
+              children: [
+                ...transactions
+                    .map((tx) =>
+                        TransactionCard(ValueKey(tx.id), tx, deleteTransaction))
+                    .toList()
+              ],
             ),
     );
   }
