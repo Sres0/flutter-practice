@@ -32,10 +32,19 @@ class TransactionCard extends StatelessWidget {
           DateFormat.yMd().format(transactions[index].date).toString(),
           style: Theme.of(context).textTheme.subtitle2,
         ),
-        trailing: IconButton(
-          icon: Icon(Icons.delete),
-          onPressed: () => deleteTransaction(transactions[index].id),
-        ),
+        trailing: MediaQuery.of(context).size.width > 400
+            ? TextButton.icon(
+                onPressed: () => deleteTransaction(transactions[index].id),
+                icon: Icon(Icons.delete),
+                label: Text('Delete'),
+                style: TextButton.styleFrom(
+                    primary: Theme.of(context).primaryColorLight),
+              )
+            : IconButton(
+                icon: Icon(Icons.delete),
+                onPressed: () => deleteTransaction(transactions[index].id),
+                color: Theme.of(context).primaryColorLight,
+              ),
       ),
     );
   }
