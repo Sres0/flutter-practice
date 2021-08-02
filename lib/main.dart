@@ -75,6 +75,32 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget _landscapeContent(double availableHeight) {
+    return Container(
+      height: availableHeight * 0.2,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Show chart',
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(fontWeight: FontWeight.normal),
+          ),
+          Switch.adaptive(
+              //for iOS
+              value: _showChart,
+              onChanged: (boolean) {
+                setState(() {
+                  _showChart = boolean;
+                });
+              }),
+        ],
+      ),
+    );
+  }
+
   bool _showChart = false;
 
   @override
@@ -107,35 +133,12 @@ class _MyHomePageState extends State<MyHomePage> {
         _appBar.preferredSize.height -
         _mediaQuery.padding.top;
     final _pageBody = SafeArea(
-      //Respected reserved areas on screen
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           _isLandscape
-              ? Container(
-                  height: _availableHeight * 0.2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Show chart',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(fontWeight: FontWeight.normal),
-                      ),
-                      Switch.adaptive(
-                          //for iOS
-                          value: _showChart,
-                          onChanged: (boolean) {
-                            setState(() {
-                              _showChart = boolean;
-                            });
-                          }),
-                    ],
-                  ),
-                )
+              ? _landscapeContent(_availableHeight)
               : Container(height: _availableHeight * 0.3, child: Chart()),
           _showChart
               ? Container(height: _availableHeight * 0.7, child: Chart())
