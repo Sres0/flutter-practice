@@ -15,18 +15,18 @@ class WeeklyBalanceCard extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         color: Theme.of(context).primaryColor,
         child: Padding(
-          padding: EdgeInsets.all(5.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                text,
-                style: Theme.of(context).textTheme.headline6,
-                textAlign: TextAlign.center,
-              ),
-              Chart(),
-            ],
-          ),
+          padding: EdgeInsets.all(10.0),
+          // child: Column(
+          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          // children: [
+          //   Text(
+          //     text,
+          //     style: Theme.of(context).textTheme.headline6,
+          //     textAlign: TextAlign.center,
+          //   ),
+          child: Chart(),
+          //   ],
+          // ),
         ),
       ),
     );
