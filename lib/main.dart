@@ -1,3 +1,6 @@
+import 'dart:io'; //iOS
+
+import 'package:flutter/cupertino.dart'; //iOS
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
@@ -72,62 +75,86 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context);
     final _isLandscape = _mediaQuery.orientation == Orientation.landscape;
-    final _appBar = AppBar(
-      title: Text(widget.title),
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.add),
-          onPressed: () => _startAddNewTransaction(context),
-        )
-      ],
-    );
+    final PreferredSizeWidget _appBar = (Platform.isIOS
+        ? CupertinoNavigationBar(
+            middle: Text('Expenses'),
+            trailing: Row(
+              mainAxisSize:
+                  MainAxisSize.min, //takes all the space it needs for child
+              children: <Widget>[
+                GestureDetector(
+                    child: Icon(CupertinoIcons.add),
+                    onTap: () => _startAddNewTransaction(context)),
+              ],
+            ))
+        : AppBar(
+            title: Text(widget.title),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () => _startAddNewTransaction(context),
+              )
+            ],
+          ) as PreferredSizeWidget);
     final _availableHeight = _mediaQuery.size.height -
         _appBar.preferredSize.height -
         _mediaQuery.padding.top;
-
-    return Scaffold(
-        backgroundColor: Theme.of(context).primaryColorDark,
-        appBar: _appBar,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            _isLandscape
-                ? Container(
-                    height: _availableHeight * 0.2,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Show chart',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6!
-                              .copyWith(fontWeight: FontWeight.normal),
-                        ),
-                        Switch(
-                            value: _showChart,
-                            onChanged: (boolean) {
-                              setState(() {
-                                _showChart = boolean;
-                              });
-                            }),
-                      ],
+    final _pageBody = Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        _isLandscape
+            ? Container(
+                height: _availableHeight * 0.2,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Show chart',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(fontWeight: FontWeight.normal),
                     ),
-                  )
-                : Container(height: _availableHeight * 0.3, child: Chart()),
-            _showChart
-                ? Container(height: _availableHeight * 0.7, child: Chart())
-                : Container(
-                    height: _availableHeight * 0.7,
-                    child: TransactionList(_deleteTransaction)),
-          ],
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Theme.of(context).primaryColorLight,
-          onPressed: () => _startAddNewTransaction(context),
-          child: Icon(Icons.add, color: Theme.of(context).primaryColor),
-        ));
+                    Switch.adaptive(
+                        //for iOS
+                        value: _showChart,
+                        onChanged: (boolean) {
+                          setState(() {
+                            _showChart = boolean;
+                          });
+                        }),
+                  ],
+                ),
+              )
+            : Container(height: _availableHeight * 0.3, child: Chart()),
+        _showChart
+            ? Container(height: _availableHeight * 0.7, child: Chart())
+            : Container(
+                height: _availableHeight * 0.7,
+                child: TransactionList(_deleteTransaction)),
+      ],
+    );
+
+    return Platform.isIOS
+        ? CupertinoPageScaffold(
+            child: _pageBody,
+            navigationBar: _appBar as ObstructingPreferredSizeWidget,
+          )
+        : Scaffold(
+            backgroundColor: Theme.of(context).primaryColorDark,
+            appBar: _appBar,
+            body: _pageBody,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: Platform.isIOS //iOS
+                ? Container()
+                : FloatingActionButton(
+                    backgroundColor: Theme.of(context).primaryColorLight,
+                    onPressed: () => _startAddNewTransaction(context),
+                    child:
+                        Icon(Icons.add, color: Theme.of(context).primaryColor),
+                  ),
+          );
   }
 }
