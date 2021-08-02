@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'widgets/transaction_list.dart';
 import 'models/transaction.dart';
@@ -8,7 +9,11 @@ import './widgets/new_transaction.dart';
 // import './widgets/user_transactions.dart';
 import './constants/default_theme.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  return runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
