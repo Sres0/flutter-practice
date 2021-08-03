@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../constants/theme_data.dart';
+import '../screens/books_screen.dart';
 
 class CategoryCard extends StatelessWidget {
   final String title;
@@ -8,21 +10,31 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle _textStyle =
+    final TextStyle _headline5 =
         Theme.of(context).textTheme.headline5 as TextStyle;
 
-    return Container(
-      padding: const EdgeInsets.all(10),
-      child: Text(
-        title,
-        style: _textStyle,
-      ),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [color, color.withAlpha(200)],
-          begin: Alignment.bottomRight,
+    void _selectCategory() {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (_) => BooksScreen()));
+    }
+
+    return InkWell(
+      onTap: _selectCategory,
+      splashColor: kPrimaryColorLight,
+      borderRadius: defaultBorderRadius,
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        child: Text(
+          title,
+          style: _headline5,
         ),
-        borderRadius: BorderRadius.circular(10),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [color, color.withAlpha(200)],
+            begin: Alignment.bottomRight,
+          ),
+          borderRadius: defaultBorderRadius,
+        ),
       ),
     );
   }
