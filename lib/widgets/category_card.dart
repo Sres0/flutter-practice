@@ -8,14 +8,19 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextStyle _textStyle =
+        Theme.of(context).textTheme.headline6 as TextStyle;
+
     return Container(
       padding: const EdgeInsets.all(10),
-      child: Text(title),
+      child: Text(
+        title,
+        style: _textStyle,
+      ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [color.withOpacity(0.4), color],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+          colors: [color, color.withAlpha(200)],
+          begin: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(10),
       ),

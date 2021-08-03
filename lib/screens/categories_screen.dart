@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personality_quiz/constants/theme_data.dart';
 
 import '../constants/category_list.dart';
 import '../widgets/category_card.dart';
@@ -8,24 +9,24 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _mediaQuery = MediaQuery.of(context);
+    // final _mediaQuery = MediaQuery.of(context);
+    var _gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
+      // maxCrossAxisExtent: _mediaQuery.size.width * 0.3,
+      maxCrossAxisExtent: 300, //looks better on different devices
+      childAspectRatio: 3 / 2,
+      crossAxisSpacing: 20,
+      mainAxisSpacing: 20,
+    );
+
     return Scaffold(
+      backgroundColor: kPrimaryColorDark,
       appBar: AppBar(title: const Text('Books')),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: GridView(
-          children: categories.map((cat) {
-            print(cat.id);
-            return CategoryCard(cat.title, cat.color);
-          }).toList(),
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: _mediaQuery.size.width * 0.3,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
-          ),
-        ),
-      ),
+      body: GridView(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          children: categories
+              .map((cat) => CategoryCard(cat.title, cat.color))
+              .toList(),
+          gridDelegate: _gridDelegate),
     );
   }
 }
