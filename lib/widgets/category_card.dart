@@ -9,7 +9,7 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextStyle _textStyle =
-        Theme.of(context).textTheme.headline6 as TextStyle;
+        Theme.of(context).textTheme.headline5 as TextStyle;
 
     return Container(
       padding: const EdgeInsets.all(10),

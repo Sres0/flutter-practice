@@ -20,6 +20,7 @@ ThemeData themeData() {
       shadows: [Shadow(offset: Offset.fromDirection(0, 1.5), blurRadius: 5)]);
 
   return ThemeData(
+    canvasColor: kPrimaryColorDark,
     primarySwatch: Colors.grey,
     primaryColor: kPrimaryColor,
     primaryColorLight: kPrimaryColorLight,
@@ -34,8 +35,6 @@ ThemeData themeData() {
     ),
     appBarTheme: AppBarTheme(
       centerTitle: true,
-      textTheme: TextTheme(
-          headline3: _textStyle.copyWith(fontWeight: FontWeight.bold)),
     ),
   );
 }

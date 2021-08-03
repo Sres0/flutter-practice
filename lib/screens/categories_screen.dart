@@ -19,7 +19,7 @@ class CategoriesScreen extends StatelessWidget {
     );
 
     return Scaffold(
-      backgroundColor: kPrimaryColorDark,
+      // backgroundColor: kPrimaryColor,
       appBar: AppBar(title: const Text('Books')),
       body: GridView(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
