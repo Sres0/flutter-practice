@@ -38,6 +38,8 @@ ThemeData themeData() {
       headline6: _textStyle.copyWith(fontWeight: FontWeight.bold),
       subtitle1: _textStyle,
       subtitle2: _textStyle.copyWith(fontWeight: FontWeight.bold),
+      bodyText1: _textStyle,
+      bodyText2: _textStyle.copyWith(fontWeight: FontWeight.bold),
     ),
     appBarTheme: AppBarTheme(
       centerTitle: true,
