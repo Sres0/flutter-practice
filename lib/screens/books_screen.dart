@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class BooksScreen extends StatelessWidget {
-  const BooksScreen();
-
   @override
   Widget build(BuildContext context) {
+    final _routeArgs =
+        ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
+    final int id = _routeArgs['id'] as int;
+    final String title = _routeArgs['title'] as String;
+
     return Scaffold(
-      appBar: AppBar(title: Text('Specific Book')),
-      body: Center(child: Text('Books!')),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: SafeArea(child: Text('Books $id!'))),
     );
   }
 }

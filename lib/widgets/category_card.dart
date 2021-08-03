@@ -3,10 +3,11 @@ import '../constants/theme_data.dart';
 import '../screens/books_screen.dart';
 
 class CategoryCard extends StatelessWidget {
+  final int id;
   final String title;
   final Color color;
 
-  const CategoryCard(this.title, this.color);
+  const CategoryCard(this.id, this.title, this.color);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CategoryCard extends StatelessWidget {
 
     void _selectCategory() {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (_) => BooksScreen()));
+          .pushNamed('/books', arguments: {'id': id, 'title': title});
     }
 
     return InkWell(

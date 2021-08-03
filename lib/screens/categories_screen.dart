@@ -21,12 +21,14 @@ class CategoriesScreen extends StatelessWidget {
     return Scaffold(
       // backgroundColor: kPrimaryColor,
       appBar: AppBar(title: const Text('Books')),
-      body: GridView(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          children: categories
-              .map((cat) => CategoryCard(cat.title, cat.color))
-              .toList(),
-          gridDelegate: _gridDelegate),
+      body: SafeArea(
+        child: GridView(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            children: categories
+                .map((cat) => CategoryCard(cat.id, cat.title, cat.color))
+                .toList(),
+            gridDelegate: _gridDelegate),
+      ),
     );
   }
 }
