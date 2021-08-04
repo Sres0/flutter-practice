@@ -3,7 +3,7 @@
 import '../models/category.dart';
 import '../constants/theme_data.dart';
 
-List<Category> categories = [
+const List<Category> categories = const [
   Category(id: 1, title: 'Awaken', color: kAwakenColor),
   Category(id: 2, title: 'Ability', color: kAbilityColor),
   Category(id: 3, title: 'Aptitude', color: kAptitudeColor),

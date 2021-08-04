@@ -15,8 +15,8 @@ class CategoryCard extends StatelessWidget {
         Theme.of(context).textTheme.headline5 as TextStyle;
 
     void _selectCategory() {
-      Navigator.of(context)
-          .pushNamed('/books', arguments: {'id': id, 'title': title});
+      Navigator.of(context).pushNamed(BooksScreen.routeName,
+          arguments: {'id': id, 'title': title});
     }
 
     return InkWell(

@@ -12,9 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Books',
       theme: themeData(),
-      home: CategoriesScreen(),
+      // home: CategoriesScreen(),
+      initialRoute: '/',
       routes: {
-        '/books': (ctx) => BooksScreen(),
+        '/': (ctx) => CategoriesScreen(),
+        BooksScreen.routeName: (ctx) => BooksScreen(),
       },
     );
   }
