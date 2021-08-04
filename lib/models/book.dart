@@ -1,5 +1,5 @@
 // import 'package:flutter/material.dart';
-enum Stars {
+enum Rating {
   OneStar,
   TwoStars,
   ThreeStars,
@@ -22,11 +22,11 @@ class Book {
   final String imageUrl;
   final List<String> metadata;
   final String summary;
-  final Stars stars;
+  final Rating rating;
   final Interest interest;
   final bool isAuthorWoman;
   final bool isAuthorEthnic;
-  final bool isRightWing;
+  final bool isControversial;
 
   const Book({
     required this.id,
@@ -35,10 +35,10 @@ class Book {
     required this.imageUrl,
     required this.metadata,
     required this.summary,
-    required this.stars,
+    required this.rating,
     required this.interest,
     required this.isAuthorWoman,
     required this.isAuthorEthnic,
-    required this.isRightWing,
+    required this.isControversial,
   });
 }
