@@ -16,7 +16,7 @@ enum Interest {
 }
 
 class Book {
-  final int id;
+  final int bookId;
   final List<String> bookCategories;
   final String title;
   final String imageUrl;
@@ -29,7 +29,7 @@ class Book {
   final bool isControversial;
 
   const Book({
-    required this.id,
+    required this.bookId,
     required this.bookCategories,
     required this.title,
     required this.imageUrl,
