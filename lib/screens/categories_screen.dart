@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:personality_quiz/constants/theme_data.dart';
 
-import '../constants/category_list.dart';
+import '../constants/data_lists.dart';
 import '../widgets/category_card.dart';
 
 class CategoriesScreen extends StatelessWidget {
