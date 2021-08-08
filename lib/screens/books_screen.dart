@@ -18,11 +18,16 @@ class BooksScreen extends StatelessWidget {
     final int _id = _bookInfo['id'] as int;
     final String _title = _bookInfo['title'] as String;
     final categoryBooks =
-        books.where((book) => book.bookCategories.contains(_title)).toList();
+        books.where((book) => book.bookCategories.contains(_id)).toList();
 
     return Scaffold(
       appBar: AppBar(title: Text(_title)),
-      body: _pageBody(_id),
+      body: ListView.builder(
+        itemBuilder: (ctx, index) {
+          return Text(categoryBooks[index].title);
+        },
+        itemCount: categoryBooks.length,
+      ),
     );
   }
 }
