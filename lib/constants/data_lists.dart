@@ -18,7 +18,7 @@ const List<Category> categories = const [
 const List<Book> books = const [
   Book(
     bookId: 0,
-    bookCategories: ['Awaken'],
+    bookCategories: [1],
     title: 'Love Yourself Like Your Life Depends on it',
     imageUrl:
         'https://images-na.ssl-images-amazon.com/images/I/61TFrYiXmnL.jpg',
@@ -32,7 +32,7 @@ const List<Book> books = const [
   ),
   Book(
     bookId: 1,
-    bookCategories: ['Awareness'],
+    bookCategories: [6],
     title: 'Guilt by Accusation',
     imageUrl: 'https://m.media-amazon.com/images/I/41aI7EyBF0L._SY346_.jpg',
     metadata: ['Alan M. Dershowitz', '2019', '194 pages'],
@@ -45,7 +45,7 @@ const List<Book> books = const [
   ),
   Book(
     bookId: 2,
-    bookCategories: ['Awaken', 'Read'],
+    bookCategories: [1, 8],
     title: 'Rediscovering the Wisdom of Human Nature',
     imageUrl: 'https://m.media-amazon.com/images/I/51CKdH+wwUL.jpg',
     metadata: ['Chet Shupe', '2020', '225 pages'],
@@ -58,7 +58,7 @@ const List<Book> books = const [
   ),
   Book(
     bookId: 3,
-    bookCategories: ['Academy'],
+    bookCategories: [5],
     title: 'Norse, Celtic Mythology & Runes',
     imageUrl: 'https://m.media-amazon.com/images/I/51AAEfct7zL._SY346_.jpg',
     metadata: ['Sofia Visconti', '2021', '315 pages'],
@@ -71,7 +71,7 @@ const List<Book> books = const [
   ),
   Book(
     bookId: 4,
-    bookCategories: ['Aptitude'],
+    bookCategories: [3],
     title: 'Walt Disney\'s Way',
     imageUrl: 'https://m.media-amazon.com/images/I/41RsNPFssOL.jpg',
     metadata: ['Andrew Lock', '2020', '145 pages'],
@@ -84,7 +84,7 @@ const List<Book> books = const [
   ),
   Book(
     bookId: 5,
-    bookCategories: ['Ability'],
+    bookCategories: [2],
     title: 'Outlining Your Novel',
     imageUrl: 'https://m.media-amazon.com/images/I/41rtJ4W2ZZL.jpg',
     metadata: ['K. M. Weiland', '2013', '145 pages'],
@@ -97,7 +97,7 @@ const List<Book> books = const [
   ),
   Book(
     bookId: 6,
-    bookCategories: ['Acumen'],
+    bookCategories: [7],
     title: 'The Art of War',
     imageUrl: 'https://m.media-amazon.com/images/I/41ut5G5M5yL.SX150.jpg',
     metadata: ['Sun Tzu', '5th Century BC', '55 pages'],
@@ -110,7 +110,7 @@ const List<Book> books = const [
   ),
   Book(
     bookId: 7,
-    bookCategories: ['Adventure'],
+    bookCategories: [4],
     title: '1984',
     imageUrl: 'https://m.media-amazon.com/images/I/51HroeiyZCL.jpg',
     metadata: ['George Orwell', '1949', '328 pages'],

@@ -15,13 +15,14 @@ class BooksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _bookInfo =
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
-    final int id = _bookInfo['id'] as int;
-    final String title = _bookInfo['title'] as String;
-    // final List categories = [];
+    final int _id = _bookInfo['id'] as int;
+    final String _title = _bookInfo['title'] as String;
+    final categoryBooks =
+        books.where((book) => book.bookCategories.contains(_title)).toList();
 
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: _pageBody(id),
+      appBar: AppBar(title: Text(_title)),
+      body: _pageBody(_id),
     );
   }
 }

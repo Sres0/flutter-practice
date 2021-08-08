@@ -17,7 +17,7 @@ enum Interest {
 
 class Book {
   final int bookId;
-  final List<String> bookCategories;
+  final List<int> bookCategories;
   final String title;
   final String imageUrl;
   final List<String> metadata;
