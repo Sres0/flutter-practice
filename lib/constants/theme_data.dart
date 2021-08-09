@@ -14,10 +14,12 @@ const Color kReadColor = Colors.red;
 Color kPrimaryColor = Colors.grey.shade700;
 Color kPrimaryColorLight = Colors.grey.shade300;
 Color kPrimaryColorDark = Colors.grey.shade900;
+Color kOpacityColorDark = Colors.black38;
 
 //DEFAULT THINGS
 BorderRadius primaryBorderRadius = BorderRadius.circular(10);
 Radius secondaryBorderRadius = Radius.circular(15);
+EdgeInsets kPrimaryEdgeInsets = EdgeInsets.all(10);
 
 //THEME DATA
 ThemeData themeData() {

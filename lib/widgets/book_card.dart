@@ -37,9 +37,23 @@ class BookCard extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Text(book.title),
+                Positioned(
+                  bottom: 20,
+                  right: 10,
+                  child: Container(
+                    padding: kPrimaryEdgeInsets,
+                    color: kOpacityColorDark,
+                    width: 300,
+                    child: Text(
+                      book.title,
+                      style: Theme.of(context).textTheme.headline4 as TextStyle,
+                      softWrap: true,
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),
