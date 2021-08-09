@@ -1,12 +1,3 @@
-// import 'package:flutter/material.dart';
-enum Rating {
-  OneStar,
-  TwoStars,
-  ThreeStars,
-  FourStars,
-  FiveStars,
-}
-
 enum Interest {
   HellNo,
   Meh,
@@ -22,7 +13,7 @@ class Book {
   final String imageUrl;
   final List<String> metadata;
   final String summary;
-  final Rating rating;
+  final int rating;
   final Interest interest;
   final bool isAuthorWoman;
   final bool isAuthorEthnic;
