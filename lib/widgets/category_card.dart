@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../constants/theme_data.dart';
 import '../screens/books_screen.dart';
 
@@ -22,7 +23,7 @@ class CategoryCard extends StatelessWidget {
     return InkWell(
       onTap: _selectCategory,
       splashColor: kPrimaryColorLight,
-      borderRadius: defaultBorderRadius,
+      borderRadius: primaryBorderRadius,
       child: Container(
         padding: const EdgeInsets.all(10),
         child: Text(
@@ -31,10 +32,10 @@ class CategoryCard extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [color, color.withAlpha(200)],
+            colors: [color, color.withOpacity(0.5)],
             begin: Alignment.bottomRight,
           ),
-          borderRadius: defaultBorderRadius,
+          borderRadius: primaryBorderRadius,
         ),
       ),
     );

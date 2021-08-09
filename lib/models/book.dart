@@ -37,8 +37,8 @@ class Book {
     required this.summary,
     required this.rating,
     required this.interest,
-    required this.isAuthorWoman,
-    required this.isAuthorEthnic,
-    required this.isControversial,
+    this.isAuthorWoman = false,
+    this.isAuthorEthnic = false,
+    this.isControversial = false,
   });
 }

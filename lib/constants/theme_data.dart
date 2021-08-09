@@ -16,7 +16,8 @@ Color kPrimaryColorLight = Colors.grey.shade300;
 Color kPrimaryColorDark = Colors.grey.shade900;
 
 //DEFAULT THINGS
-BorderRadius defaultBorderRadius = BorderRadius.circular(10);
+BorderRadius primaryBorderRadius = BorderRadius.circular(10);
+Radius secondaryBorderRadius = Radius.circular(15);
 
 //THEME DATA
 ThemeData themeData() {

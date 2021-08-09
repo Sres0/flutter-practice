@@ -26,9 +26,6 @@ const List<Book> books = const [
     summary: LYLYLDOI,
     rating: Rating.FiveStars,
     interest: Interest.SoundsInteresting,
-    isAuthorWoman: false,
-    isAuthorEthnic: false,
-    isControversial: false,
   ),
   Book(
     bookId: 1,
@@ -39,8 +36,6 @@ const List<Book> books = const [
     summary: GBA,
     rating: Rating.FiveStars,
     interest: Interest.SoundsInteresting,
-    isAuthorWoman: false,
-    isAuthorEthnic: false,
     isControversial: true,
   ),
   Book(
@@ -52,8 +47,6 @@ const List<Book> books = const [
     summary: RTWOHN,
     rating: Rating.FourStars,
     interest: Interest.SoundsInteresting,
-    isAuthorWoman: false,
-    isAuthorEthnic: false,
     isControversial: true,
   ),
   Book(
@@ -78,9 +71,6 @@ const List<Book> books = const [
     summary: WDW,
     rating: Rating.FourStars,
     interest: Interest.SoundsInteresting,
-    isAuthorWoman: false,
-    isAuthorEthnic: false,
-    isControversial: false,
   ),
   Book(
     bookId: 5,
@@ -92,8 +82,6 @@ const List<Book> books = const [
     rating: Rating.FiveStars,
     interest: Interest.HellYeah,
     isAuthorWoman: true,
-    isAuthorEthnic: false,
-    isControversial: false,
   ),
   Book(
     bookId: 6,
@@ -104,9 +92,7 @@ const List<Book> books = const [
     summary: TAOW,
     rating: Rating.FiveStars,
     interest: Interest.HellYeah,
-    isAuthorWoman: false,
     isAuthorEthnic: true,
-    isControversial: false,
   ),
   Book(
     bookId: 7,
@@ -117,8 +103,6 @@ const List<Book> books = const [
     summary: NTEF,
     rating: Rating.FiveStars,
     interest: Interest.HellYeah,
-    isAuthorWoman: false,
-    isAuthorEthnic: false,
     isControversial: true,
   ),
 ];
