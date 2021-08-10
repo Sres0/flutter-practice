@@ -26,13 +26,14 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle _subtitle1 = Theme.of(context).textTheme.subtitle1 as TextStyle;
     return InkWell(
       onTap: _selectBook,
       splashColor: kPrimaryColorDark,
-      borderRadius: primaryBorderRadius,
+      borderRadius: kprimaryBorderRadius,
       child: Card(
-        margin: EdgeInsets.all(20),
-        shape: RoundedRectangleBorder(borderRadius: primaryBorderRadius),
+        margin: kPrimaryEdgeInsets,
+        shape: RoundedRectangleBorder(borderRadius: kprimaryBorderRadius),
         color: kPrimaryColorLight,
         child: Column(
           children: [
@@ -40,8 +41,8 @@ class BookCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.only(
-                    topLeft: secondaryBorderRadius,
-                    topRight: secondaryBorderRadius,
+                    topLeft: ksecondaryBorderRadius,
+                    topRight: ksecondaryBorderRadius,
                   ),
                   child: Image.network(
                     book.imageUrl,
@@ -54,8 +55,10 @@ class BookCard extends StatelessWidget {
                   bottom: 20,
                   right: 10,
                   child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: kprimaryBorderRadius,
+                        color: kOpacityColorDark),
                     padding: kPrimaryEdgeInsets,
-                    color: kOpacityColorDark,
                     width: 300,
                     child: Text(
                       book.title,
@@ -82,22 +85,14 @@ class BookCard extends StatelessWidget {
                     children: [
                       Icon(Icons.favorite, color: kPrimaryColorDark),
                       SizedBox(width: 5),
-                      Text(
-                        interestText,
-                        style:
-                            Theme.of(context).textTheme.subtitle1 as TextStyle,
-                      )
+                      Text(interestText, style: _subtitle1)
                     ],
                   ),
                   Row(
                     children: [
                       Icon(Icons.auto_stories, color: kPrimaryColorDark),
                       SizedBox(width: 5),
-                      Text(
-                        book.metadata[2],
-                        style:
-                            Theme.of(context).textTheme.subtitle1 as TextStyle,
-                      )
+                      Text(book.metadata[2], style: _subtitle1)
                     ],
                   ),
                 ],

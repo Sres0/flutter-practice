@@ -20,7 +20,7 @@ class CategoryCard extends StatelessWidget {
     return InkWell(
       onTap: _selectCategory,
       splashColor: kPrimaryColorLight,
-      borderRadius: primaryBorderRadius,
+      borderRadius: kprimaryBorderRadius,
       child: Container(
         padding: kPrimaryEdgeInsets,
         child: Text(
@@ -32,7 +32,7 @@ class CategoryCard extends StatelessWidget {
             colors: [color, color.withOpacity(0.5)],
             begin: Alignment.bottomRight,
           ),
-          borderRadius: primaryBorderRadius,
+          borderRadius: kprimaryBorderRadius,
         ),
       ),
     );
