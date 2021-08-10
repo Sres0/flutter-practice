@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personality_quiz/screens/tabs_screen.dart';
 
 import './constants/theme_data.dart';
 import './screens/books_screen.dart';
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: themeData(),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => CategoriesScreen(),
+        '/': (ctx) => TabsScreen(),
+        CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
         BooksScreen.routeName: (ctx) => BooksScreen(),
         BookDetailsScreen.routeName: (ctx) => BookDetailsScreen(),
       },

@@ -5,6 +5,7 @@ import '../constants/data_lists.dart';
 import '../widgets/category_card.dart';
 
 class CategoriesScreen extends StatelessWidget {
+  static const routeName = '/categories';
   const CategoriesScreen();
 
   @override
@@ -16,14 +17,11 @@ class CategoriesScreen extends StatelessWidget {
       mainAxisSpacing: 20,
     );
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Books')),
-      body: SafeArea(
-        child: GridView(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          children: CATEGORIES.map((cat) => CategoryCard(cat)).toList(),
-          gridDelegate: _gridDelegate,
-        ),
+    return SafeArea(
+      child: GridView(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        children: CATEGORIES.map((cat) => CategoryCard(cat)).toList(),
+        gridDelegate: _gridDelegate,
       ),
     );
   }
