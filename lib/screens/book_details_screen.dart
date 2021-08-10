@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:personality_quiz/constants/theme_data.dart';
 
 import '../models/book.dart';
-import '../models/category.dart';
+// import '../models/category.dart';
 import '../constants/data_lists.dart';
 
 class BookDetailsScreen extends StatelessWidget {
@@ -15,49 +15,59 @@ class BookDetailsScreen extends StatelessWidget {
         Theme.of(context).textTheme.headline5 as TextStyle;
     final _id = ModalRoute.of(context)!.settings.arguments as int;
     final Book _book = books.firstWhere((book) => _id == book.bookId);
-    final Category _category =
-        CATEGORIES.firstWhere((cat) => _book.bookCategories.contains(cat.id));
+    // final Category _category =
+    // CATEGORIES.firstWhere((cat) => _book.bookCategories.contains(cat.id));
     return Scaffold(
       appBar: AppBar(title: Text(_book.title)),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Flexible(
-            flex: 3,
-            child: Image.network(
-              _book.imageUrl,
-              fit: BoxFit.fitHeight,
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Flexible(
-            flex: 2,
-            child: Text(
-              _book.title.toString(),
-              style: _headline5,
-            ),
-          ),
-          Flexible(
-            flex: 2,
-            child: ListView.builder(
-              itemCount: _book.metadata.length,
-              itemBuilder: (ctx, index) => Card(
-                child: Text(_book.metadata[index]),
-                color: kPrimaryColorDark,
-                elevation: 0,
+      body: SingleChildScrollView(
+        child: Container(
+          margin: kSecondaryEdgeInsets,
+          height: _mediaQuery.size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,
+                child: Image.network(
+                  _book.imageUrl,
+                  fit: BoxFit.fitHeight,
+                ),
               ),
-            ),
+              SizedBox(height: 10),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    _book.title.toString(),
+                    style: _headline5,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                      '${_book.metadata[0]} | ${_book.metadata[1]} | ${_book.metadata[2]}'),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (var i = 0; i < _book.rating; i++)
+                        Icon(Icons.star, color: kPrimaryColorLight)
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 10),
+              Flexible(
+                child: Container(
+                  width: _mediaQuery.size.width * 0.9,
+                  child: SingleChildScrollView(
+                    padding: kPrimaryEdgeInsets,
+                    child: Text(_book.summary),
+                  ),
+                ),
+              )
+            ],
           ),
-          Expanded(
-            flex: 4,
-            child: SingleChildScrollView(
-              padding: kPrimaryEdgeInsets,
-              child: Text(_book.summary),
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
