@@ -25,7 +25,7 @@ const List<Book> books = const [
     metadata: ['Kamal Ravikant', '2020', '228 pages'],
     summary: LYLYLDOI,
     rating: 5,
-    interest: Interest.SoundsInteresting,
+    interest: Interest.Okay,
   ),
   Book(
     bookId: 1,
@@ -35,7 +35,7 @@ const List<Book> books = const [
     metadata: ['Alan M. Dershowitz', '2019', '194 pages'],
     summary: GBA,
     rating: 5,
-    interest: Interest.SoundsInteresting,
+    interest: Interest.Okay,
     isControversial: true,
   ),
   Book(
@@ -46,7 +46,7 @@ const List<Book> books = const [
     metadata: ['Chet Shupe', '2020', '225 pages'],
     summary: RTWOHN,
     rating: 4,
-    interest: Interest.SoundsInteresting,
+    interest: Interest.Interesting,
     isControversial: true,
   ),
   Book(
@@ -57,7 +57,7 @@ const List<Book> books = const [
     metadata: ['Sofia Visconti', '2021', '315 pages'],
     summary: NCMR,
     rating: 5,
-    interest: Interest.HellYeah,
+    interest: Interest.Okay,
     isAuthorWoman: true,
     isAuthorEthnic: true,
     isControversial: true,
@@ -70,7 +70,7 @@ const List<Book> books = const [
     metadata: ['Andrew Lock', '2020', '145 pages'],
     summary: WDW,
     rating: 4,
-    interest: Interest.SoundsInteresting,
+    interest: Interest.Boring,
   ),
   Book(
     bookId: 5,
@@ -80,7 +80,7 @@ const List<Book> books = const [
     metadata: ['K. M. Weiland', '2013', '145 pages'],
     summary: OYN,
     rating: 5,
-    interest: Interest.HellYeah,
+    interest: Interest.Okay,
     isAuthorWoman: true,
   ),
   Book(
@@ -91,7 +91,7 @@ const List<Book> books = const [
     metadata: ['Sun Tzu', '5th Century BC', '55 pages'],
     summary: TAOW,
     rating: 5,
-    interest: Interest.HellYeah,
+    interest: Interest.Okay,
     isAuthorEthnic: true,
   ),
   Book(
@@ -102,7 +102,7 @@ const List<Book> books = const [
     metadata: ['George Orwell', '1949', '328 pages'],
     summary: NTEF,
     rating: 5,
-    interest: Interest.HellYeah,
+    interest: Interest.Interesting,
     isControversial: true,
   ),
 ];

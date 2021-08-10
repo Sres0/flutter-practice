@@ -5,8 +5,20 @@ import '../models/book.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;
-
   const BookCard(this.book);
+
+  String get interestText {
+    switch (book.interest) {
+      case Interest.Boring:
+        return 'Boring';
+      case Interest.Okay:
+        return 'Okay';
+      case Interest.Interesting:
+        return 'Interesting!';
+      default:
+        return 'Don\'t know!';
+    }
+  }
 
   void _selectBook() {
     print('object');
@@ -58,12 +70,36 @@ class BookCard extends StatelessWidget {
             Padding(
               padding: kPrimaryEdgeInsets,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  for (var i = 0; i < book.rating; i++)
-                    Icon(
-                      Icons.star,
-                      color: kPrimaryColorDark,
-                    ),
+                  Row(
+                    children: [
+                      for (var i = 0; i < book.rating; i++)
+                        Icon(Icons.star, color: kPrimaryColorDark),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.favorite, color: kPrimaryColorDark),
+                      SizedBox(width: 5),
+                      Text(
+                        interestText,
+                        style:
+                            Theme.of(context).textTheme.subtitle1 as TextStyle,
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.auto_stories, color: kPrimaryColorDark),
+                      SizedBox(width: 5),
+                      Text(
+                        book.metadata[2],
+                        style:
+                            Theme.of(context).textTheme.subtitle1 as TextStyle,
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),

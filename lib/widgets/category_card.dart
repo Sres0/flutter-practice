@@ -12,9 +12,6 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle _headline5 =
-        Theme.of(context).textTheme.headline5 as TextStyle;
-
     void _selectCategory() {
       Navigator.of(context).pushNamed(BooksScreen.routeName,
           arguments: {'id': id, 'title': title});
@@ -28,7 +25,7 @@ class CategoryCard extends StatelessWidget {
         padding: kPrimaryEdgeInsets,
         child: Text(
           title,
-          style: _headline5,
+          style: Theme.of(context).textTheme.headline5 as TextStyle,
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(

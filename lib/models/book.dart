@@ -1,9 +1,7 @@
 enum Interest {
-  HellNo,
-  Meh,
+  Boring,
   Okay,
-  SoundsInteresting,
-  HellYeah,
+  Interesting,
 }
 
 class Book {
