@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/theme_data.dart';
 import '../models/book.dart';
+import '../screens/book_details_screen.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;
@@ -20,15 +21,18 @@ class BookCard extends StatelessWidget {
     }
   }
 
-  void _selectBook() {
-    print('object');
+  void _selectBook(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      BookDetailsScreen.routeName,
+      // arguments: {'id': id, 'title': title});
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     TextStyle _subtitle1 = Theme.of(context).textTheme.subtitle1 as TextStyle;
     return InkWell(
-      onTap: _selectBook,
+      onTap: () => _selectBook(context),
       splashColor: kPrimaryColorDark,
       borderRadius: kprimaryBorderRadius,
       child: Card(

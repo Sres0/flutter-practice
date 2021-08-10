@@ -21,9 +21,7 @@ class CategoriesScreen extends StatelessWidget {
       body: SafeArea(
         child: GridView(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          children: categories
-              .map((cat) => CategoryCard(cat.id, cat.title, cat.color))
-              .toList(),
+          children: CATEGORIES.map((cat) => CategoryCard(cat)).toList(),
           gridDelegate: _gridDelegate,
         ),
       ),

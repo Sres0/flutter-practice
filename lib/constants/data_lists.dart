@@ -4,15 +4,29 @@ import '../models/category.dart';
 import '../models/book.dart';
 import '../constants/theme_data.dart';
 
-const List<Category> categories = const [
-  Category(id: 1, title: 'Awaken', color: kAwakenColor),
-  Category(id: 2, title: 'Ability', color: kAbilityColor),
-  Category(id: 3, title: 'Aptitude', color: kAptitudeColor),
-  Category(id: 4, title: 'Adventure', color: kAdventureColor),
-  Category(id: 5, title: 'Academy', color: kAcademyColor),
-  Category(id: 6, title: 'Awareness', color: kAwarenessColor),
-  Category(id: 7, title: 'Acumen', color: kAcumenColor),
-  Category(id: 8, title: 'Read', color: kReadColor),
+const Category AWAKEN = Category(id: 1, title: 'Awaken', color: kAwakenColor);
+const Category ABILITY =
+    Category(id: 2, title: 'Ability', color: kAbilityColor);
+const Category APTITUDE =
+    Category(id: 3, title: 'Aptitude', color: kAptitudeColor);
+const Category ADVENTURE =
+    Category(id: 4, title: 'Adventure', color: kAdventureColor);
+const Category ACADEMY =
+    Category(id: 5, title: 'Academy', color: kAcademyColor);
+const Category AWARENESS =
+    Category(id: 6, title: 'Awareness', color: kAwarenessColor);
+const Category ACUMEN = Category(id: 7, title: 'Acumen', color: kAcumenColor);
+const Category READ = Category(id: 8, title: 'Read', color: kReadColor);
+
+const List<Category> CATEGORIES = const [
+  AWAKEN,
+  ABILITY,
+  APTITUDE,
+  ADVENTURE,
+  ACADEMY,
+  AWARENESS,
+  ACUMEN,
+  READ,
 ];
 
 const List<Book> books = const [

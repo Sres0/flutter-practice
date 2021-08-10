@@ -1,35 +1,33 @@
 import 'package:flutter/material.dart';
 
 import '../constants/theme_data.dart';
+import '../models/category.dart';
 import '../screens/books_screen.dart';
 
 class CategoryCard extends StatelessWidget {
-  final int id;
-  final String title;
-  final Color color;
+  final Category category;
 
-  const CategoryCard(this.id, this.title, this.color);
+  const CategoryCard(this.category);
 
   @override
   Widget build(BuildContext context) {
-    void _selectCategory() {
-      Navigator.of(context).pushNamed(BooksScreen.routeName,
-          arguments: {'id': id, 'title': title});
+    void _selectCategory(Category cat) {
+      Navigator.of(context).pushNamed(BooksScreen.routeName, arguments: cat);
     }
 
     return InkWell(
-      onTap: _selectCategory,
+      onTap: () => _selectCategory(category),
       splashColor: kPrimaryColorLight,
       borderRadius: kprimaryBorderRadius,
       child: Container(
         padding: kPrimaryEdgeInsets,
         child: Text(
-          title,
+          category.title,
           style: Theme.of(context).textTheme.headline5 as TextStyle,
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [color, color.withOpacity(0.5)],
+            colors: [category.color, category.color.withBlue(250)],
             begin: Alignment.bottomRight,
           ),
           borderRadius: kprimaryBorderRadius,
