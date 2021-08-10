@@ -24,18 +24,13 @@ class BooksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _category = ModalRoute.of(context)!.settings.arguments as Category;
-    final Color _color = _category.color;
     final int _id = _category.id;
     final String _title = _category.title;
     final _categoryBooks =
         books.where((book) => book.bookCategories.contains(_id)).toList();
 
     return Scaffold(
-      appBar: AppBar(
-          title: Text(
-        _title,
-        style: TextStyle(color: _color),
-      )),
+      appBar: AppBar(title: Text(_title)),
       body: _pageBody(_categoryBooks),
     );
   }

@@ -41,7 +41,7 @@ ThemeData themeData() {
       headline6: _textStyle.copyWith(fontWeight: FontWeight.bold),
       subtitle1: _textStyle.copyWith(
         shadows: [Shadow(offset: Offset.zero, blurRadius: 0)],
-        color: kPrimaryColor,
+        color: kPrimaryColorDark,
       ),
       subtitle2: _textStyle.copyWith(fontWeight: FontWeight.bold),
       bodyText1: _textStyle,

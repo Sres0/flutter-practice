@@ -5,11 +5,11 @@ import '../models/book.dart';
 import '../screens/book_details_screen.dart';
 
 class BookCard extends StatelessWidget {
-  final Book book;
-  const BookCard(this.book);
+  final Book _book;
+  const BookCard(this._book);
 
   String get interestText {
-    switch (book.interest) {
+    switch (_book.interest) {
       case Interest.Boring:
         return 'Boring';
       case Interest.Okay:
@@ -21,24 +21,21 @@ class BookCard extends StatelessWidget {
     }
   }
 
-  void _selectBook(BuildContext context) {
-    Navigator.of(context).pushNamed(
-      BookDetailsScreen.routeName,
-      // arguments: {'id': id, 'title': title});
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    void _selectBook() {
+      Navigator.of(context)
+          .pushNamed(BookDetailsScreen.routeName, arguments: _book);
+    }
+
     TextStyle _subtitle1 = Theme.of(context).textTheme.subtitle1 as TextStyle;
     return InkWell(
-      onTap: () => _selectBook(context),
+      onTap: _selectBook,
       splashColor: kPrimaryColorDark,
       borderRadius: kprimaryBorderRadius,
       child: Card(
         margin: kPrimaryEdgeInsets,
         shape: RoundedRectangleBorder(borderRadius: kprimaryBorderRadius),
-        color: kPrimaryColorLight,
         child: Column(
           children: [
             Stack(
@@ -49,7 +46,7 @@ class BookCard extends StatelessWidget {
                     topRight: ksecondaryBorderRadius,
                   ),
                   child: Image.network(
-                    book.imageUrl,
+                    _book.imageUrl,
                     height: 250,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -65,7 +62,7 @@ class BookCard extends StatelessWidget {
                     padding: kPrimaryEdgeInsets,
                     width: 300,
                     child: Text(
-                      book.title,
+                      _book.title,
                       style: Theme.of(context).textTheme.headline4 as TextStyle,
                       softWrap: true,
                       textAlign: TextAlign.end,
@@ -81,7 +78,7 @@ class BookCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      for (var i = 0; i < book.rating; i++)
+                      for (var i = 0; i < _book.rating; i++)
                         Icon(Icons.star, color: kPrimaryColorDark),
                     ],
                   ),
@@ -89,14 +86,14 @@ class BookCard extends StatelessWidget {
                     children: [
                       Icon(Icons.favorite, color: kPrimaryColorDark),
                       SizedBox(width: 5),
-                      Text(interestText, style: _subtitle1)
+                      Text(interestText, style: _subtitle1),
                     ],
                   ),
                   Row(
                     children: [
                       Icon(Icons.auto_stories, color: kPrimaryColorDark),
                       SizedBox(width: 5),
-                      Text(book.metadata[2], style: _subtitle1)
+                      Text(_book.metadata[2], style: _subtitle1),
                     ],
                   ),
                 ],
