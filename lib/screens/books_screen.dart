@@ -8,7 +8,7 @@ import '../models/category.dart';
 class BooksScreen extends StatelessWidget {
   static const routeName = '/books';
 
-  Widget _pageBody(categoryBooks) {
+  Widget _pageBody(categoryBooks, categoryColor) {
     return Center(
       child: SafeArea(
         child: ListView.builder(
@@ -31,7 +31,7 @@ class BooksScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(_title)),
-      body: _pageBody(_categoryBooks),
+      body: _pageBody(_categoryBooks, _category.color),
     );
   }
 }

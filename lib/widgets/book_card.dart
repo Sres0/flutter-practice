@@ -6,6 +6,7 @@ import '../screens/book_details_screen.dart';
 
 class BookCard extends StatelessWidget {
   final Book _book;
+  // final Color _color;
   const BookCard(this._book);
 
   String get interestText {
@@ -23,19 +24,20 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _selectBook() {
+    void _selectBook(bookId) {
       Navigator.of(context)
-          .pushNamed(BookDetailsScreen.routeName, arguments: _book);
+          .pushNamed(BookDetailsScreen.routeName, arguments: bookId);
     }
 
     TextStyle _subtitle1 = Theme.of(context).textTheme.subtitle1 as TextStyle;
     return InkWell(
-      onTap: _selectBook,
+      onTap: () => _selectBook(_book.bookId),
       splashColor: kPrimaryColorDark,
       borderRadius: kprimaryBorderRadius,
       child: Card(
         margin: kPrimaryEdgeInsets,
         shape: RoundedRectangleBorder(borderRadius: kprimaryBorderRadius),
+        color: kPrimaryColorLight,
         child: Column(
           children: [
             Stack(
