@@ -25,7 +25,7 @@ class CategoryCard extends StatelessWidget {
       splashColor: kPrimaryColorLight,
       borderRadius: primaryBorderRadius,
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: kPrimaryEdgeInsets,
         child: Text(
           title,
           style: _headline5,

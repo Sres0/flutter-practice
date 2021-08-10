@@ -12,14 +12,6 @@ class BookCard extends StatelessWidget {
     print('object');
   }
 
-  List<Icon> _showRating() {
-    List<Icon> icons = [];
-    for (var i = 0; i < book.rating; i++) {
-      icons.add(Icon(Icons.star));
-    }
-    return icons;
-  }
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -29,6 +21,7 @@ class BookCard extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: primaryBorderRadius),
+        color: kPrimaryColorLight,
         child: Column(
           children: [
             Stack(
@@ -65,8 +58,13 @@ class BookCard extends StatelessWidget {
             Padding(
               padding: kPrimaryEdgeInsets,
               child: Row(
-                // children: [...(for (var i = 0; i < book.rating; i++) => Icon())],
-                children: [..._showRating()],
+                children: [
+                  for (var i = 0; i < book.rating; i++)
+                    Icon(
+                      Icons.star,
+                      color: kPrimaryColorDark,
+                    ),
+                ],
               ),
             ),
           ],
