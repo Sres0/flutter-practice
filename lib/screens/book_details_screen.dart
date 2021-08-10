@@ -57,16 +57,46 @@ class BookDetailsScreen extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Flexible(
-                child: Container(
-                  width: _mediaQuery.size.width * 0.9,
-                  child: SingleChildScrollView(
-                    padding: kPrimaryEdgeInsets,
-                    child: Text(_book.summary),
-                  ),
-                ),
+                child: ColoredContainer(mediaQuery: _mediaQuery, book: _book),
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ColoredContainer extends StatelessWidget {
+  const ColoredContainer({
+    Key? key,
+    required MediaQueryData mediaQuery,
+    required Book book,
+  })  : _mediaQuery = mediaQuery,
+        _book = book,
+        super(key: key);
+
+  final MediaQueryData _mediaQuery;
+  final Book _book;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: kprimaryBorderRadius,
+          color: kPrimaryColor,
+          border: Border.all(color: kPrimaryColorLight)),
+      width: _mediaQuery.size.width * 0.9,
+      child: SingleChildScrollView(
+        padding: kPrimaryEdgeInsets,
+        child: Text(
+          _book.summary,
+          style: TextStyle(shadows: [
+            Shadow(
+              blurRadius: 0,
+              offset: Offset.zero,
+            )
+          ]),
         ),
       ),
     );
