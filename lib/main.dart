@@ -19,6 +19,10 @@ class MyApp extends StatelessWidget {
         BooksScreen.routeName: (ctx) => BooksScreen(),
         BookDetailsScreen.routeName: (ctx) => BookDetailsScreen(),
       },
+      onGenerateRoute: (ctx) =>
+          MaterialPageRoute(builder: (ctx) => CategoriesScreen()),
+      onUnknownRoute: (ctx) =>
+          MaterialPageRoute(builder: (ctx) => CategoriesScreen()),
     );
   }
 }
