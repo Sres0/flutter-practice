@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personality_quiz/constants/theme_data.dart';
 
 import './categories_screen.dart';
 import './favorites_screen.dart';
@@ -11,23 +12,38 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  final List<Widget> _pages = [CategoriesScreen(), FavoritesScreen()];
+
+  int _selectedIndex = 0;
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final _noShadow = [Shadow(offset: Offset.zero, blurRadius: 0)];
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('books'),
-            bottom: TabBar(
-              tabs: <Widget>[
-                Tab(icon: Icon(Icons.category), text: 'Categories'),
-                Tab(icon: Icon(Icons.favorite), text: 'Favorites'),
-              ],
-            ),
-          ),
-          body: TabBarView(
-            children: [CategoriesScreen(), FavoritesScreen()],
-          ),
-        ));
+    return Scaffold(
+      appBar: AppBar(title: Text('books')),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: kPrimaryColorLight,
+        unselectedItemColor: kPrimaryColor,
+        selectedLabelStyle: TextStyle(shadows: _noShadow),
+        unselectedLabelStyle: TextStyle(shadows: _noShadow),
+        currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.shifting,
+        onTap: _selectPage,
+        backgroundColor: kPrimaryColor,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Category'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Favorites'),
+        ],
+      ),
+    );
   }
 }
