@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:personality_quiz/constants/theme_data.dart';
 
+import '../constants/theme_data.dart';
 import '../models/book.dart';
 // import '../models/category.dart';
 import '../constants/data_lists.dart';

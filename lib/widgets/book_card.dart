@@ -6,8 +6,8 @@ import '../screens/book_details_screen.dart';
 
 class BookCard extends StatelessWidget {
   final Book _book;
-  // final Color _color;
-  const BookCard(this._book);
+  final Function _removeBook;
+  const BookCard(this._book, this._removeBook);
 
   String get interestText {
     switch (_book.interest) {
@@ -27,7 +27,11 @@ class BookCard extends StatelessWidget {
     void _selectBook(bookId) {
       Navigator.of(context)
           .pushNamed(BookDetailsScreen.routeName, arguments: bookId)
-          .then((id) => print(id));
+          .then((id) {
+        if (id != null) {
+          _removeBook(id);
+        }
+      });
     }
 
     TextStyle _subtitle1 = Theme.of(context).textTheme.subtitle1 as TextStyle;

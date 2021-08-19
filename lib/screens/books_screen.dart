@@ -1,19 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:personality_quiz/models/category.dart';
-import 'package:personality_quiz/widgets/book_card.dart';
 
+import '../widgets/book_card.dart';
 import '../constants/data_lists.dart  ';
 import '../models/category.dart';
+import '../models/book.dart';
 
-class BooksScreen extends StatelessWidget {
+class BooksScreen extends StatefulWidget {
   static const routeName = '/books';
 
-  Widget _pageBody(categoryBooks, categoryColor) {
+  @override
+  _BooksScreenState createState() => _BooksScreenState();
+}
+
+class _BooksScreenState extends State<BooksScreen> {
+  late String _title;
+  late List<Book> _displayedBooks;
+
+  @override
+  void didChangeDependencies() {
+    final _category = ModalRoute.of(context)!.settings.arguments as Category;
+    final int _id = _category.id;
+    _title = _category.title;
+    _displayedBooks =
+        books.where((book) => book.bookCategories.contains(_id)).toList();
+    super.didChangeDependencies();
+  }
+
+  void _removeBook(id) {
+    setState(() {
+      _displayedBooks.removeWhere((book) => id == book.bookId);
+    });
+  }
+
+  Widget _pageBody(categoryBooks) {
     return Center(
       child: SafeArea(
         child: ListView.builder(
           itemBuilder: (ctx, index) {
-            return BookCard(categoryBooks[index]);
+            return BookCard(categoryBooks[index], _removeBook);
           },
           itemCount: categoryBooks.length,
         ),
@@ -23,15 +47,9 @@ class BooksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _category = ModalRoute.of(context)!.settings.arguments as Category;
-    final int _id = _category.id;
-    final String _title = _category.title;
-    final _categoryBooks =
-        books.where((book) => book.bookCategories.contains(_id)).toList();
-
     return Scaffold(
       appBar: AppBar(title: Text(_title)),
-      body: _pageBody(_categoryBooks, _category.color),
+      body: _pageBody(_displayedBooks),
     );
   }
 }
