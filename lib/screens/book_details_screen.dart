@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:personality_quiz/constants/theme_data.dart';
 
@@ -15,8 +17,7 @@ class BookDetailsScreen extends StatelessWidget {
         Theme.of(context).textTheme.headline5 as TextStyle;
     final _id = ModalRoute.of(context)!.settings.arguments as int;
     final Book _book = books.firstWhere((book) => _id == book.bookId);
-    // final Category _category =
-    // CATEGORIES.firstWhere((cat) => _book.bookCategories.contains(cat.id));
+
     return Scaffold(
       appBar: AppBar(title: Text(_book.title)),
       body: SingleChildScrollView(
@@ -62,6 +63,11 @@ class BookDetailsScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kPrimaryColorLight.withOpacity(0.7),
+        child: Icon(Icons.delete),
+        onPressed: () => Navigator.of(context).pop(_id),
       ),
     );
   }

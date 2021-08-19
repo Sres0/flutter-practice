@@ -26,7 +26,8 @@ class BookCard extends StatelessWidget {
   Widget build(BuildContext context) {
     void _selectBook(bookId) {
       Navigator.of(context)
-          .pushNamed(BookDetailsScreen.routeName, arguments: bookId);
+          .pushNamed(BookDetailsScreen.routeName, arguments: bookId)
+          .then((id) => print(id));
     }
 
     TextStyle _subtitle1 = Theme.of(context).textTheme.subtitle1 as TextStyle;
