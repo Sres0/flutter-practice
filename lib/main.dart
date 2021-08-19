@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:personality_quiz/screens/favorites_screen.dart';
-import 'package:personality_quiz/screens/tabs_screen.dart';
-
 import './constants/theme_data.dart';
+
+import './screens/favorites_screen.dart';
+import './screens/filters_screen.dart';
+import './screens/tabs_screen.dart';
 import './screens/books_screen.dart';
 import './screens/book_details_screen.dart';
 import './screens/categories_screen.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         BooksScreen.routeName: (ctx) => BooksScreen(),
         BookDetailsScreen.routeName: (ctx) => BookDetailsScreen(),
         FavoritesScreen.routeName: (ctx) => FavoritesScreen(),
+        FiltersScreen.routeName: (ctx) => FiltersScreen(),
       },
       onGenerateRoute: (ctx) =>
           MaterialPageRoute(builder: (ctx) => CategoriesScreen()),

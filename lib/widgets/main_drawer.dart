@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../constants/theme_data.dart';
 
-import './filters_list_tile.dart';
+import '../constants/theme_data.dart';
+import '../screens/filters_screen.dart';
+import './main_list_tile.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer();
@@ -19,17 +20,12 @@ class MainDrawer extends StatelessWidget {
           width: double.infinity,
           padding: kPrimaryEdgeInsets,
           alignment: Alignment.bottomCenter,
-          child: Text('Filters', style: _textTheme.headline4),
+          child: Text('Books', style: _textTheme.headline4),
         ),
-        FiltersListTile(
-          Icons.face,
-          'Woman author',
-          () => Navigator.pushNamed(context, '/'),
-        ),
-        FiltersListTile(Icons.explore, 'Ethnic author',
-            () => Navigator.pushNamed(context, '/')),
-        FiltersListTile(Icons.outlet, 'Controversial',
-            () => Navigator.pushNamed(context, '/')),
+        MainListTile(
+            Icons.book, 'Books', () => Navigator.of(context).pushNamed('/')),
+        MainListTile(Icons.settings, 'Filters',
+            () => Navigator.of(context).pushNamed(FiltersScreen.routeName)),
       ],
     ));
   }
