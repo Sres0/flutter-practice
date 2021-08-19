@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:personality_quiz/constants/theme_data.dart';
+import '../constants/theme_data.dart';
 
+import '../widgets/main_drawer.dart';
 import './categories_screen.dart';
 import './favorites_screen.dart';
 
@@ -31,6 +32,7 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(_pages[_selectedIndex]['title'] as String)),
+      drawer: MainDrawer(),
       body: _pages[_selectedIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: kPrimaryColorLight,
