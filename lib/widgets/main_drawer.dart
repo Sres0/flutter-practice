@@ -23,9 +23,16 @@ class MainDrawer extends StatelessWidget {
           child: Text('Books', style: _textTheme.headline4),
         ),
         MainListTile(
-            Icons.book, 'Books', () => Navigator.of(context).pushNamed('/')),
-        MainListTile(Icons.settings, 'Filters',
-            () => Navigator.of(context).pushNamed(FiltersScreen.routeName)),
+          Icons.book,
+          'Books',
+          () => Navigator.of(context).pushReplacementNamed('/'),
+        ),
+        MainListTile(
+          Icons.settings,
+          'Filters',
+          () => Navigator.of(context)
+              .pushReplacementNamed(FiltersScreen.routeName),
+        ),
       ],
     ));
   }
