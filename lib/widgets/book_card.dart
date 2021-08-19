@@ -86,7 +86,7 @@ class BookCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.favorite, color: kPrimaryColorDark),
+                      Icon(Icons.auto_awesome, color: kPrimaryColorDark),
                       SizedBox(width: 5),
                       Text(interestText, style: _subtitle1),
                     ],

@@ -4,7 +4,7 @@ import './categories_screen.dart';
 import './favorites_screen.dart';
 
 class TabsScreen extends StatefulWidget {
-  const TabsScreen({Key? key}) : super(key: key);
+  const TabsScreen();
 
   @override
   _TabsScreenState createState() => _TabsScreenState();
