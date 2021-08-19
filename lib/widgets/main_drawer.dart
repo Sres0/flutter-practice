@@ -9,22 +9,27 @@ class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme _textTheme = Theme.of(context).textTheme;
-    Size _mediaQuery = MediaQuery.of(context).size;
 
     return Drawer(
         child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
+          color: kPrimaryColor,
           height: 100,
-          width: _mediaQuery.width * 0.25,
+          width: double.infinity,
           padding: kPrimaryEdgeInsets,
-          alignment: Alignment.centerLeft,
-          child: Text('Books!', style: _textTheme.headline5),
+          alignment: Alignment.bottomCenter,
+          child: Text('Filters', style: _textTheme.headline4),
         ),
-        FiltersListTile(Icons.face, 'Woman author'),
-        FiltersListTile(Icons.explore, 'Ethnic author'),
-        FiltersListTile(Icons.outlet, 'Controversial'),
+        FiltersListTile(
+          Icons.face,
+          'Woman author',
+          () => Navigator.pushNamed(context, '/'),
+        ),
+        FiltersListTile(Icons.explore, 'Ethnic author',
+            () => Navigator.pushNamed(context, '/')),
+        FiltersListTile(Icons.outlet, 'Controversial',
+            () => Navigator.pushNamed(context, '/')),
       ],
     ));
   }

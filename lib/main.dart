@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personality_quiz/screens/favorites_screen.dart';
 import 'package:personality_quiz/screens/tabs_screen.dart';
 
 import './constants/theme_data.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
         BooksScreen.routeName: (ctx) => BooksScreen(),
         BookDetailsScreen.routeName: (ctx) => BookDetailsScreen(),
+        FavoritesScreen.routeName: (ctx) => FavoritesScreen(),
       },
       onGenerateRoute: (ctx) =>
           MaterialPageRoute(builder: (ctx) => CategoriesScreen()),
