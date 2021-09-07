@@ -6,7 +6,10 @@ import '../widgets/main_drawer.dart';
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
 
-  FiltersScreen();
+  final Map<String, bool> filters;
+  final Function saveFilters;
+
+  FiltersScreen(this.filters, this.saveFilters);
 
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
@@ -16,6 +19,14 @@ class _FiltersScreenState extends State<FiltersScreen> {
   var _isAuthorWoman = false;
   var _isAuthorEthnic = false;
   var _isControversial = false;
+
+  @override
+  initState() {
+    _isAuthorWoman = widget.filters['woman']!;
+    _isAuthorEthnic = widget.filters['ethnic']!;
+    _isControversial = widget.filters['controversial']!;
+    super.initState();
+  }
 
   Widget _filterSwitch(
     String title,
@@ -42,7 +53,22 @@ class _FiltersScreenState extends State<FiltersScreen> {
   Widget build(BuildContext context) {
     TextTheme _textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title: Text('Filters')),
+      appBar: AppBar(
+        title: Text('Filters'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                final selectedFilters = {
+                  'woman': _isAuthorWoman,
+                  'ethnic': _isAuthorEthnic,
+                  'controversial': _isControversial,
+                };
+                widget.saveFilters(selectedFilters);
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+              icon: Icon(Icons.save))
+        ],
+      ),
       drawer: MainDrawer(),
       body: Column(
         children: [

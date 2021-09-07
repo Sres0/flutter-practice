@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/book_card.dart';
-import '../constants/data_lists.dart  ';
+// import '../constants/data_lists.dart  ';
 import '../models/category.dart';
 import '../models/book.dart';
 
 class BooksScreen extends StatefulWidget {
   static const routeName = '/books';
+  final List<Book> availableBooks;
+
+  BooksScreen(this.availableBooks);
 
   @override
   _BooksScreenState createState() => _BooksScreenState();
@@ -21,8 +24,9 @@ class _BooksScreenState extends State<BooksScreen> {
     final _category = ModalRoute.of(context)!.settings.arguments as Category;
     final int _id = _category.id;
     _title = _category.title;
-    _displayedBooks =
-        books.where((book) => book.bookCategories.contains(_id)).toList();
+    _displayedBooks = widget.availableBooks
+        .where((book) => book.bookCategories.contains(_id))
+        .toList();
     super.didChangeDependencies();
   }
 
