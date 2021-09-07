@@ -8,6 +8,11 @@ import '../constants/data_lists.dart';
 class BookDetailsScreen extends StatelessWidget {
   static const routeName = '/details';
 
+  final Function isFavorite;
+  final Function toggleFavorite;
+
+  BookDetailsScreen(this.isFavorite, this.toggleFavorite);
+
   @override
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context);
@@ -64,8 +69,9 @@ class BookDetailsScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: kPrimaryColorLight.withOpacity(0.7),
-        child: Icon(Icons.delete),
-        onPressed: () => Navigator.of(context).pop(_id),
+        child: Icon(
+            isFavorite(_id) ? Icons.favorite : Icons.favorite_border_outlined),
+        onPressed: () => toggleFavorite(_id),
       ),
     );
   }

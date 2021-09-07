@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/book_card.dart';
-// import '../constants/data_lists.dart  ';
+// import '../constants/data_lists.dart';
 import '../models/category.dart';
 import '../models/book.dart';
 
@@ -30,18 +30,12 @@ class _BooksScreenState extends State<BooksScreen> {
     super.didChangeDependencies();
   }
 
-  void _removeBook(id) {
-    setState(() {
-      _displayedBooks.removeWhere((book) => id == book.bookId);
-    });
-  }
-
   Widget _pageBody(categoryBooks) {
     return Center(
       child: SafeArea(
         child: ListView.builder(
           itemBuilder: (ctx, index) {
-            return BookCard(categoryBooks[index], _removeBook);
+            return BookCard(categoryBooks[index]);
           },
           itemCount: categoryBooks.length,
         ),

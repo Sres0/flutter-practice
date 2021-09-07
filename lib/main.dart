@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Book> _availableBooks = books;
+  List<Book> _favoriteBooks = [];
 
   void _saveFilters(Map<String, bool> filterData) {
     setState(() {
@@ -44,6 +45,25 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _toggleFavorite(int bookId) {
+    final _existingIndex =
+        _favoriteBooks.indexWhere((book) => book.bookId == bookId);
+    if (_existingIndex >= 0) {
+      setState(() {
+        _favoriteBooks.removeAt(_existingIndex);
+      });
+    } else {
+      setState(() {
+        _favoriteBooks.add(books.firstWhere((book) => book.bookId == bookId));
+        print(_favoriteBooks);
+      });
+    }
+  }
+
+  bool _isFavorite(int id) {
+    return _favoriteBooks.any((book) => book.bookId == id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,11 +71,12 @@ class _MyAppState extends State<MyApp> {
       theme: themeData(),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => TabsScreen(),
+        '/': (ctx) => TabsScreen(_favoriteBooks),
         CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
         BooksScreen.routeName: (ctx) => BooksScreen(_availableBooks),
-        BookDetailsScreen.routeName: (ctx) => BookDetailsScreen(),
-        FavoritesScreen.routeName: (ctx) => FavoritesScreen(),
+        BookDetailsScreen.routeName: (ctx) =>
+            BookDetailsScreen(_isFavorite, _toggleFavorite),
+        FavoritesScreen.routeName: (ctx) => FavoritesScreen(_favoriteBooks),
         FiltersScreen.routeName: (ctx) => FiltersScreen(_filters, _saveFilters),
       },
       onGenerateRoute: (ctx) =>
